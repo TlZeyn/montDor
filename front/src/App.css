@@ -1,0 +1,14 @@
+
+@font-face {
+  font-family: "Marck Script";
+  src: url('./assets/MarckScript-Regular.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  background-color: #3E2715;
+}
