@@ -6,12 +6,12 @@ const Nav = () => {
   return (
     <nav>
       <ul>
-        <li><a href="#">ACCUEIL</a></li>
-        <li><a href="#">RECETTES</a></li>
-        <li><a href="#">ARTICLES</a></li>
-        <li><a href="#">COMMUNAUTÉ</a></li>
-        <li><a href="#">À PROPOS</a></li>
-        <li><a href="#">CONTACT</a></li>
+        <a href="#"><li>ACCUEIL</li></a>
+        <a href="#"><li>RECETTES</li></a>
+        <a href="#"><li>ARTICLES</li></a>
+        <a href="#"><li>COMMUNAUTÉ</li></a>
+        <a href="#"><li>À PROPOS</li></a>
+        <a href="#"><li>CONTACT</li></a>
       </ul>
     </nav>
   )
