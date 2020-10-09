@@ -1,8 +1,12 @@
 const express = require('express')
 const connection = require ('./conf')
+const dotenv = require('dotenv')
+
+
 const port = 5000;
 
 const app = express();
+dotenv.config();
 
 // Entry point of server 'http://localhost:5000/'
 app.get('/', (req, res) => {
