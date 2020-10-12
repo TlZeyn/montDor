@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `mondor`.`categories_recipes` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+INSERT INTO `mondor`.`categories_recipes` (`name`) VALUES ('entree'),('plat'),('dessert'),('boisson');
 
 -- -----------------------------------------------------
 -- Table `mondor`.`recipes`
