@@ -132,6 +132,7 @@ CREATE TABLE IF NOT EXISTS `mondor`.`ingredients` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+INSERT INTO `mondor`.`ingredients` (`name`) VALUES ('vin blanc sec'),('miel'),('bâton(s) de cannelle'),('clou(s) de girofle'),('gingembre frais'),('gousse(s) de cardamome');
 
 -- -----------------------------------------------------
 -- Table `mondor`.`ingredient_recipes`
