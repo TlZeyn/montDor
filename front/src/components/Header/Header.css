@@ -11,17 +11,17 @@
 }
 
 #header__button {
-    padding: 20px;
-    font-size: 1.55em;
-    background: linear-gradient(120deg, #F0BC1E, #FBF99A, #F0BC1E, #FBF99A);
-    align-self: center;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    outline-style: none;
-    position: fixed;
-    top: 700px;
-    right: 2%;
+  padding: 20px;
+  font-size: 1.55em;
+  background: linear-gradient(120deg, #F0BC1E, #FBF99A, #F0BC1E, #FBF99A);
+  align-self: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline-style: none;
+  position: fixed;
+  top: 700px;
+  right: 2%;
 }
 
 @media screen and (max-width: 1024px) {
