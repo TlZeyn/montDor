@@ -26,15 +26,19 @@
 
 @media screen and (max-width: 1024px) {
   #header__logo {
-    height: 10em;
+    height: 18em;
   }
 
   #header__button {
-    font-size: 1.2em;
+    font-size: 1em;
   }
 }
 
 @media screen and (max-width: 425px) {
+  #header__logo {
+    height: 12em;
+  }
+
   #header__button {
     display: none;
   }
