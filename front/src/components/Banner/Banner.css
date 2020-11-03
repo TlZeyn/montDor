@@ -1,0 +1,12 @@
+#banner {
+  display: flex;
+  height: 500px;
+}
+
+#banner p {
+  font-size: 100px;
+  color: white;
+  text-align: center;
+  margin: auto;
+  align-self: center;
+}
