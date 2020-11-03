@@ -26,9 +26,9 @@ class Nav extends Component {
         <ul>
           <Link to="./"><li>ACCUEIL</li></Link>
           <Link to="./Recipes"><li>RECETTES</li></Link>
-          <a href="#"><li>COMMUNAUTÉ</li></a>
-          <a href="#"><li>À PROPOS</li></a>
-          <a href="#"><li>CONTACT</li></a>
+          <li>COMMUNAUTÉ</li>
+          <li>À PROPOS</li>
+          <li>CONTACT</li>
         </ul>
       </nav>
     )
