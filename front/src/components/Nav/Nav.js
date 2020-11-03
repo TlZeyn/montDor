@@ -23,6 +23,7 @@ const Nav = () => {
 
   // Scroll handle function
   const handleScroll = height => {
+    // If the scroll height is greater than the given height, nav become sticky
     window.pageYOffset > height ? setIsSticky(true) : setIsSticky(false)
   }
 
