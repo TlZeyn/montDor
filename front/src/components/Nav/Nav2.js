@@ -4,18 +4,16 @@ import './Nav.css'
 
 const Nav2 = () => {
 
-  const [previousPosition, setPreviousPosition] = useState('static')
-  const [nextPosition, setNextPosition] = useState('fixed')
-  const [previousTop, setPreviousTop] = useState('')
-  const [nextTop, setNextTop] = useState(0)
+  const [position, setPosition] = useState('static')
+  const [top, setTop] = useState('')
 
-  const listenScrollEvent = () => {
+  listenScrollEvent = () => {
     if (window.scrollY > 250) {
-      setNextPosition(nextPosition),
-      setNextTop(nextTop)
+      setPosition("fixed"),
+      setTop(0)
     } else {
-      setPreviousPosition(previousPosition),
-      setPreviousTop(previousTop)
+      setPosition("static"),
+      setTop("previousTop")
     }
   }
 
@@ -24,7 +22,7 @@ const Nav2 = () => {
   })
 
   return (
-    <nav style={{previousPosition, previousTop}}>
+    <nav style={{position, top}}>
       <ul>
         <a href="#"><li>ACCUEIL</li></a>
         <a href="#"><li>RECETTES</li></a>

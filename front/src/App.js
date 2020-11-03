@@ -20,7 +20,7 @@ const App = () => {
       <RecipeSearchBar />
       <Switch>
         <Route exact path='/' component={TrendyRecipes} />
-        <Route path='/Recipes' component={Recipes} />
+        <Route path='/recipes' component={Recipes} />
       </Switch>
       <Footer />
     </div>
