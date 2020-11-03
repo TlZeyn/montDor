@@ -1,6 +1,6 @@
 // Librairies
 import React from 'react'
-import { Switch, Route} from "react-router-dom"
+import { Switch, Route } from "react-router-dom"
 // Components
 import Header from './components/Header/Header'
 import Nav from './components/Nav/Nav'
@@ -18,12 +18,14 @@ const App = () => {
     <div className="App">
       <Header />
       <Nav />
-      <Banner />
-      <RecipeSearchBar />
-      <Switch>
-        <Route exact path='/' component={TrendyRecipes} />
-        <Route path='/recipes' component />
-      </Switch>
+      <main className="Main-Screens">
+        <Banner />
+        <RecipeSearchBar />
+        <Switch>
+          <Route exact path='/' component={TrendyRecipes} />
+          <Route path='/recipes' component />
+        </Switch>
+      </main>
       <Footer />
     </div>
   );
