@@ -9,7 +9,7 @@ import RecipeSearchBar from './components/RecipeSearchBar/RecipeSearchBar'
 import Footer from './components/Footer/Footer'
 // Screens
 import TrendyRecipes from './components/TrendyRecipes/TrendyRecipes'
-import Recipes from './components/Recipes/Recipes'
+// import Recipes from './components/Recipes/Recipes'
 // Style
 import './App.css';
 
@@ -22,7 +22,7 @@ const App = () => {
       <RecipeSearchBar />
       <Switch>
         <Route exact path='/' component={TrendyRecipes} />
-        <Route path='/recipes' component={Recipes} />
+        <Route path='/recipes' component />
       </Switch>
       <Footer />
     </div>
