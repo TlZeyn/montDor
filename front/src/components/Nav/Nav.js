@@ -1,38 +1,43 @@
-import React, { Component } from 'react';
+// Librairies
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-
+// Style
 import './Nav.css'
 
-class Nav extends Component {
-  state = {
-    position: "static",
-    top: ""
+const Nav = () => {
+
+  // States
+  const [isSticky, setIsSticky] = useState(false)
+
+  // useEffect acting like componentDidMount + componentWillUnmount
+  useEffect(() => {
+    // Get element's Y position on the page
+    const element = document.querySelector('nav')
+    const height = element.offsetTop
+    // Event listener to decide if the menu is sticky or not
+    window.addEventListener('scroll', () => handleScroll(height))
+
+    // Remove the event listener whenever we destroy the component
+    return () => window.removeEventListener('scroll', () => handleScroll(height))
+  }, [])
+
+  // Scroll handle function
+  const handleScroll = height => {
+    window.pageYOffset > height ? setIsSticky(true) : setIsSticky(false)
   }
 
-  listenScrollEvent = () => {
-    if (window.scrollY > 200) {
-      this.setState({position: "fixed", top: 0})
-    } else {
-      this.setState({position: "static", top: ""})
-    }
-  };
+  return (
+    <nav className={isSticky ? 'Sticky-Nav' : ''}>
+      <ul>
+        <Link to="/"><li>ACCUEIL</li></Link>
+        <Link to="/recipes"><li>RECETTES</li></Link>
+        <Link to="/"><li>COMMUNAUTÉ</li></Link>
+        <Link to="/"><li>À PROPOS</li></Link>
+        <Link to="/"><li>CONTACT</li></Link>
+      </ul>
+    </nav>
+  )
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.listenScrollEvent)
-  };
-  render() {
-    return (
-      <nav style={{position: this.state.position, top: this.state.top}}>
-        <ul>
-          <Link to="./"><li>ACCUEIL</li></Link>
-          <Link to="/recipes"><li>RECETTES</li></Link>
-          <li>COMMUNAUTÉ</li>
-          <li>À PROPOS</li>
-          <li>CONTACT</li>
-        </ul>
-      </nav>
-    )
-  }
 }
 
 export default Nav
