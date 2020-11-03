@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 import './Nav.css'
 
@@ -23,9 +24,8 @@ class Nav extends Component {
     return (
       <nav style={{position: this.state.position, top: this.state.top}}>
         <ul>
-          <a href="#"><li>ACCUEIL</li></a>
-          <a href="#"><li>RECETTES</li></a>
-          <a href="#"><li>ARTICLES</li></a>
+          <Link to="./"><li>ACCUEIL</li></Link>
+          <Link to="./Recipes"><li>RECETTES</li></Link>
           <a href="#"><li>COMMUNAUTÉ</li></a>
           <a href="#"><li>À PROPOS</li></a>
           <a href="#"><li>CONTACT</li></a>

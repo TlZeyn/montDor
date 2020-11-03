@@ -6,6 +6,7 @@ import Nav from './components/Nav/Nav'
 import Banner from './components/Banner/Banner'
 import RecipeSearchBar from './components/RecipeSearchBar/RecipeSearchBar'
 import TrendyRecipes from './components/TrendyRecipes/TrendyRecipes'
+import Recipes from './components/Recipes/Recipes'
 import Footer from './components/Footer/Footer'
 
 import './App.css';
@@ -15,11 +16,12 @@ const App = () => {
     <div className="App">
       <Header />
       <Nav />
-      <Switch>
-        <Route exact path='/' component={Banner} />
-      </Switch>
+      <Banner />
       <RecipeSearchBar />
-      <TrendyRecipes />
+      <Switch>
+        <Route exact path='/' component={TrendyRecipes} />
+        <Route path='/Recipes' component={Recipes} />
+      </Switch>
       <Footer />
     </div>
   );
