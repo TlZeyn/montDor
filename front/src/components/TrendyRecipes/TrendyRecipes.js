@@ -1,6 +1,13 @@
 import React from 'react';
+import axios from 'axios';
 
 import './TrendyRecipes.css'
+
+axios.get('http://localhost:5000/accueil')
+  .then((res) => {console.log(res.data)
+  }).catch((error) => {
+    console.log(error)
+  });
 
 const TrendyRecipes = () => {
   return (
