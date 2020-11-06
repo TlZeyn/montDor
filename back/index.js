@@ -1,13 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const connection = require ('./conf')
+const api = require('./routes/index')
 const dotenv = require('dotenv')
 
 
 const port = 5000;
 
 const app = express();
-app.use(body)
+app.use('/', api)
 
 dotenv.config();
 
