@@ -25,10 +25,10 @@ class Nav extends Component {
       <nav style={{position: this.state.position, top: this.state.top}}>
         <ul>
           <Link to="./"><li>ACCUEIL</li></Link>
-          <Link to="./Recipes"><li>RECETTES</li></Link>
-          <li>COMMUNAUTÉ</li>
-          <li>À PROPOS</li>
-          <li>CONTACT</li>
+          <Link to="./recipes"><li>RECETTES</li></Link>
+          <Link><li>COMMUNAUTÉ</li></Link>
+          <Link><li>À PROPOS</li></Link>
+          <Link><li>CONTACT</li></Link>
         </ul>
       </nav>
     )

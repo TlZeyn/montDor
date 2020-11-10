@@ -1,0 +1,28 @@
+#recipes {
+  margin-top: 50px;
+}
+
+#recipes__filters {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin: auto;
+}
+
+.recipes__filters-inputs {
+  background-color: #F0BC1E;
+  height: 3em;
+  width: 15%;
+  font-size: 1rem;
+  border: none;
+  outline-style: none;
+  cursor: pointer;
+  margin-bottom: 100px;
+}
+
+#recipes__results {
+  height: 50em;
+  width: 80%;
+  margin: auto;
+  border: 1px solid white;
+}
