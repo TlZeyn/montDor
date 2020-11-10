@@ -1,11 +1,17 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const connection = require ('./conf')
+const api = require('./routes/index')
 const dotenv = require('dotenv')
+const cors = require('cors')
 
 
 const port = 5000;
 
-const app = express();
+const app = express()
+app.use(cors())
+app.use('/', api)
+
 dotenv.config();
 
 // Entry point of server 'http://localhost:5000/'
