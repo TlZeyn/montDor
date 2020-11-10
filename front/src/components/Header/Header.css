@@ -24,12 +24,26 @@
   right: 2%;
 }
 
+#header_scroll_top {
+  padding: 20px;
+  font-size: 1.55em;
+  background: linear-gradient(120deg, #F0BC1E, #FBF99A, #F0BC1E, #FBF99A);
+  align-self: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline-style: none;
+  position: fixed;
+  bottom: 4%;
+  right: 20%;
+}
+
 @media screen and (max-width: 1024px) {
   #header__logo {
     height: 18em;
   }
 
-  #header__button {
+  #header__button, #header_scroll_top {
     font-size: 1em;
   }
 }
@@ -39,7 +53,7 @@
     height: 12em;
   }
 
-  #header__button {
+  #header__button, #header_scroll_top {
     display: none;
   }
 }
