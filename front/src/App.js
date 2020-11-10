@@ -18,14 +18,12 @@ const App = () => {
     <div className="App">
       <Header />
       <Nav />
-      <main className="Main-Screens">
-        <Banner />
-        <RecipeSearchBar />
-        <Switch>
-          <Route exact path='/' component={TrendyRecipes} />
-          <Route path='/recipes' component />
-        </Switch>
-      </main>
+      <Banner />
+      <RecipeSearchBar />
+      <Switch>
+        <Route exact path='/' component={TrendyRecipes} />
+        <Route path='/recipes' component />
+      </Switch>
       <Footer />
     </div>
   );
