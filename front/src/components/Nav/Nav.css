@@ -12,7 +12,7 @@ nav {
   top: 0;
 }
 
-.Sticky-Nav + .Main-Screens {
+.Sticky-Nav ~ * {
   padding-top: 70px;
 }
 
