@@ -1,6 +1,13 @@
 import React from 'react';
+import axios from 'axios';
 
 import './Recipes.css'
+
+axios.get('http://localhost:5000/recettes')
+  .then((res) => {console.log(res.data)
+  }).catch((error) => {
+    console.log(error)
+  });
 
 const Recipes = () => {
   return (
