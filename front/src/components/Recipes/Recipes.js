@@ -15,10 +15,10 @@ const Recipes = () => {
 
     <div id="recipes__filters">
 
-      <input type="button" class="recipes__filters-inputs" value="Entrées"></input>
-      <input type="button" class="recipes__filters-inputs" value="Plats"></input>
-      <input type="button" class="recipes__filters-inputs" value="Desserts"></input>
-      <input type="button" class="recipes__filters-inputs" value="Favoris"></input>
+      <input type="button" className="recipes__filters-inputs" value="Entrées"></input>
+      <input type="button" className="recipes__filters-inputs" value="Plats"></input>
+      <input type="button" className="recipes__filters-inputs" value="Desserts"></input>
+      <input type="button" className="recipes__filters-inputs" value="Favoris"></input>
 
     </div>
 
