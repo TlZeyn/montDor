@@ -30,23 +30,21 @@ const Nav = () => {
     }
   }
 
-  // Burger handler
-  const handleBurger = () => {
-    setBurgerOpened(!burgerOpened)
+  const hideBurger = () => {
+    document.querySelector('#Nav-Checkbox').checked = false
   }
 
   return (
-    <nav className={isSticky ? 'Sticky-Nav' : ''}>
-      <div className="Nav-Burger" onClick={handleBurger}>
-        <p className="Nav-Burger-Symbol">{burgerOpened ? "X" : "III"}</p>
+    <nav className={`Nav ${isSticky ? 'Nav-Sticky' : ''}`}>
+      <label htmlFor="Nav-Checkbox" className="Nav-Menu-Toggle">≡ Menu</label>
+      <input type="checkbox" id="Nav-Checkbox" className="Nav-Checkbox" />
+      <div className="Nav-Link-List">
+        <Link className="Nav-Link" to="/" onClick={hideBurger}>Accueil</Link>
+        <Link className="Nav-Link" to="/recipes" onClick={hideBurger}>Recettes</Link>
+        <Link className="Nav-Link" to="/" onClick={hideBurger}>Communauté</Link>
+        <Link className="Nav-Link" to="/" onClick={hideBurger}>À propops</Link>
+        <Link className="Nav-Link" to="/" onClick={hideBurger}>Contact</Link>
       </div>
-      <ul className={window.innerWidth < 576 ? burgerOpened ? "Nav-Opened-Burger" : "Nav-Closed-Burger" : ""}>
-        <Link to="/"><li>ACCUEIL</li></Link>
-        <Link to="/recipes"><li>RECETTES</li></Link>
-        <Link to="/"><li>COMMUNAUTÉ</li></Link>
-        <Link to="/"><li>À PROPOS</li></Link>
-        <Link to="/"><li>CONTACT</li></Link>
-      </ul>
     </nav>
   )
 
