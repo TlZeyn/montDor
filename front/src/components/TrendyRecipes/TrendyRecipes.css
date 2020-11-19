@@ -10,10 +10,34 @@
   font-size: 2.85em;
 }
 
-#trendyRecipes div {
+#trendyRecipes > div {
   height: 500px;
-  border: 3px solid white;
   width: 80%;
+  margin: auto;
+}
+
+.trendyRecipes__UI {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trendyRecipes__UI-card {
+  width: 30%;
+  background: url("../../assets/parchemin.jpeg");
+  background-position: bottom;
+  display: flex;
+  flex-direction: column;
+  height: 85%;
+}
+
+.trendyRecipes__UI-card img {
+  width: 100%;
+  height: 20em;
+}
+
+.trendyRecipes__UI-card h3 {
+  text-align: center;
+  font-size: 26px;
   margin: auto;
 }
 
