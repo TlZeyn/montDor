@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `BD_MONTDOR`.`ts_user_usr` (
   `usr_log` VARCHAR(12) NOT NULL,
   `usr_mail` VARCHAR(45) NOT NULL,
   `usr_pwd` CHAR(60) NOT NULL,
-  `usr_avatar` BLOB NULL,
+  `usr_avatar` VARCHAR(100) NULL,
   `usr_isBanned` TINYINT NOT NULL DEFAULT 1,
   `usr_rol_id` INT NOT NULL,
   PRIMARY KEY (`usr_id`),
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `BD_MONTDOR`.`t_favorite_fvr` (
   PRIMARY KEY (`fvr_id`),
   CONSTRAINT `fk_fvr_usr_id`
     FOREIGN KEY (`fvr_usr_id`)
-    REFERENCES `BD_MONTDOR`.`ts_user_usr` (`usr_rol_id`)
+    REFERENCES `BD_MONTDOR`.`ts_user_usr` (`usr_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `BD_MONTDOR`.`t_recipe_rcp` (
   `rcp_cooktime` INT NOT NULL,
   `rcp_nbEater` INT NOT NULL,
   `rcp_message` TINYTEXT NULL,
-  `rcp_photo` BLOB NULL,
+  `rcp_photo` VARCHAR(100) NULL,
   `rcp_usr_id` INT NOT NULL,
   `rcp_cat_id` INT NOT NULL,
   PRIMARY KEY (`rcp_id`),
@@ -233,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `BD_MONTDOR`.`tj_ingredientRecipe_irp` (
   `irp_igr_id` INT NOT NULL,
   `irp_rcp_id` INT NOT NULL,
   `irp_amount` FLOAT NULL,
-  `irp_unt_id` INT NOT NULL,
+  `irp_unt_id` INT NULL,
   CONSTRAINT `fk_irp_igr_id`
     FOREIGN KEY (`irp_igr_id`)
     REFERENCES `BD_MONTDOR`.`t_ingredient_igr` (`igr_id`)
@@ -475,6 +475,14 @@ INSERT INTO `BD_MONTDOR`.`tj_recipeStep_rst` (`rst_rcp_id`, `rst_stp_id`)
 VALUES (1,4);
 INSERT INTO `BD_MONTDOR`.`tj_recipeStep_rst` (`rst_rcp_id`, `rst_stp_id`) 
 VALUES (1,5);
+
+-- -----------------------------------------------------
+-- Update 20/11
+-- Changed format of image from blob to varchar to receive img path instead
+-- Changed error in t_favorite_fvr where fk_fvr_usr_id references 
+-- deleted not null requirement for unit in tj_ingredientRecipe_irp
+-- added a unique key combo for igrRecipe
+-- -----------------------------------------------------
 
 
 COMMIT;
