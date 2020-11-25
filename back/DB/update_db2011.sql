@@ -9,6 +9,7 @@ THEN
 SIGNAL SQLSTATE '45OOO'
 SET MESSAGE_TEXT = 'The rating must be between 1 and 5';
 END IF//
+DELIMITER ;
 
 
 DELIMITER //
@@ -24,6 +25,7 @@ THEN
 SIGNAL SQLSTATE '45OOO'
 SET MESSAGE_TEXT = 'Can''t have multiple playlists if not admin';
 END IF//
+DELIMITER ;
 
 DELIMITER //
 CREATE TRIGGER ban_recipe
@@ -38,6 +40,7 @@ THEN
 SIGNAL SQLSTATE '45OOO'
 SET MESSAGE_TEXT = 'Can''t post a recipe if banned';
 END IF//
+DELIMITER ;
 
 DELIMITER //
 CREATE TRIGGER ban_comment
@@ -52,6 +55,7 @@ THEN
 SIGNAL SQLSTATE '45OOO'
 SET MESSAGE_TEXT = 'Can''t post a comment if banned';
 END IF//
+DELIMITER ;
 
 DELIMITER //
 CREATE TRIGGER ban_rating
@@ -66,6 +70,7 @@ THEN
 SIGNAL SQLSTATE '45OOO'
 SET MESSAGE_TEXT = 'Can''t rate a recipe if banned';
 END IF//
+DELIMITER ;
 
 
 
