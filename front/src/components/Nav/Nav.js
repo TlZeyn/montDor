@@ -33,6 +33,9 @@ const Nav = () => {
 
   return (
     <nav className={`Nav ${isSticky ? 'Nav-Sticky' : ''}`}>
+      <div className="Nav-Logo-Container">
+        <img className="Nav-Logo" src={require('../../assets/Logo.svg')} alt="logo de Mont d'Or"/>
+      </div>
       <label htmlFor="Nav-Checkbox" className="Nav-Menu-Toggle">≡ Menu</label>
       <input type="checkbox" id="Nav-Checkbox" className="Nav-Checkbox" />
       <div className="Nav-Link-List">

@@ -39,8 +39,12 @@
 }
 
 @media screen and (max-width: 1024px) {
+  #header{
+    height: auto;
+  }
+
   #header__logo {
-    height: 18em;
+    display: none;
   }
 
   #header__button, #header_scroll_top {
@@ -49,8 +53,12 @@
 }
 
 @media screen and (max-width: 425px) {
+  #header{
+    height: auto;
+  }
+
   #header__logo {
-    height: 12em;
+    display: none;
   }
 
   #header__button, #header_scroll_top {
