@@ -8,7 +8,6 @@ const Nav = () => {
 
   // States
   const [isSticky, setIsSticky] = useState(false)
-  const [burgerOpened, setBurgerOpened] = useState(false)
 
   // useEffect acting like componentDidMount + componentWillUnmount
   useEffect(() => {
@@ -24,10 +23,8 @@ const Nav = () => {
 
   // Scroll handle function
   const handleScroll = height => {
-    if (window.innerWidth > 576) {
-      // If the scroll height is greater than the given height, nav become sticky
-      window.pageYOffset > height ? setIsSticky(true) : setIsSticky(false)
-    }
+    // If the scroll height is greater than the given height, nav become sticky
+    window.pageYOffset > height ? setIsSticky(true) : setIsSticky(false)
   }
 
   const hideBurger = () => {

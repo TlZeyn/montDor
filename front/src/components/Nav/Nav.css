@@ -83,6 +83,7 @@
       text-transform: uppercase;
       transition-duration: .5s;
       padding: 5px;
+      margin: auto;
   }
 
   .Nav-Link-List {
