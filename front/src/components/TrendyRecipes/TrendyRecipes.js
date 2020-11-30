@@ -6,45 +6,32 @@ import './TrendyRecipes.css'
 import img from '../../assets/smaug.jpg'
 
 const TrendyRecipes = () => {
-
-  /*state = {
-    recipes: []
-  }*/
-
-  /*fetchRecipes = () => {
-    axios.get('http://localhost:5000/accueil')
-    .then((res) => {console.log(res.data)})
-    .catch((error) => {console.log(error)})
-    .then(data => {this.setState({ recipes: data})})
-  }
   
-  componentDidMount() {
-    this.fetchRecipes()
-  }*/
-  
-  const [recipes, setRecipes] = useState([])
+  const [recipes, setRecipes] = useState(null)
  
   const fetchRecipes = () => {
     axios.get('http://localhost:5000/accueil')
-          .then((res) => {console.log(res.data)})
+          .then(res => setRecipes(res.data))
           .catch((error) => {console.log(error)})
-          .then(data => {setRecipes({recipes: data})})
-  }
+          
+        }
+        
+        useEffect(() => {
+          fetchRecipes()
+        }, [])
 
-  useEffect(() => {
-    fetchRecipes()
-  }, [])
-
+        console.log("ici", recipes)
+        
   return (
     <section id="trendyRecipes">
-      <h2 className="trendyRecipes__titles">{recipes.title}</h2>
+      <h2 className="trendyRecipes__titles">Notre recette du moment</h2>
       <div className="trendyRecipes__UI">
         <div id="trendyRecipes__UI-firstCard" className="trendyRecipes__UI-card">
           <img src={img} alt="Recette"/>
-          <h3>La Douceur de Smaug</h3>
+          {recipes && <h3>{recipes[0].title}</h3>}
         </div>
 
-        <div id="trendyRecipes__UI-secondCard" className="trendyRecipes__UI-card">
+        {/* <div id="trendyRecipes__UI-secondCard" className="trendyRecipes__UI-card">
           <img src={img} alt="Recette"/>
           <h3>La Douceur de Smaug</h3>
         </div>
@@ -52,7 +39,7 @@ const TrendyRecipes = () => {
         <div id="trendyRecipes__UI-thirdCard" className="trendyRecipes__UI-card">
           <img src={img} alt="Recette"/>
           <h3>La Douceur de Smaug</h3>
-        </div>
+        </div> */}
       </div>
 
       <h2 className="trendyRecipes__titles">Recettes coup de coeur du chef personnel de Thranduil</h2>
