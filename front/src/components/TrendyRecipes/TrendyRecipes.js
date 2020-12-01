@@ -19,8 +19,7 @@ const TrendyRecipes = () => {
         useEffect(() => {
           fetchRecipes()
         }, [])
-
-        console.log("ici", recipes)
+        
         
   return (
     <section id="trendyRecipes">
