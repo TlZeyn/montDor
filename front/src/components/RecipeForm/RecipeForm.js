@@ -61,11 +61,15 @@ const RecipeForm = () => {
 
     const deleteStep = (index) => {
         const newList = listSteps.filter((item, i) => i !== index.i)
-        newList.map((e) => {
-            if (e.number > 1) {
-                e.number -= 1
-            }
-        })
+        const lastOfNewList = newList.length - 1
+        const lastOfListStep = listSteps.length - 1
+        if (newList[lastOfNewList].step == listSteps[lastOfListStep].step) {
+            newList.map((e) => {
+                if (e.number > 1 ) {
+                    e.number -= 1
+                }
+            })
+        }         
         setListSteps(newList)
     }
 
