@@ -7,14 +7,16 @@ const RecipeForm = () => {
     const [prepTime, setPrepTime] = useState(undefined)
     const [cookTime, setCookTime] = useState(undefined)
 
-    const [ingredient, setIngredient] = useState('Ingrédient')
-    const [quantity, setQuantity] = useState('Quantité')
-    const [unit, setUnit] = useState('Unité')
+    const [ingredient, setIngredient] = useState('')
+    const [quantity, setQuantity] = useState('')
+    const [unit, setUnit] = useState('')
     const [listIngredient, setListIngredient] = useState([])
 
-    const [step, setSteps] = useState('Ajouter une étape')
+    const [step, setSteps] = useState('')
     const [listSteps, setListSteps] = useState([])
     const [nbStep, setNbStep] = useState(0)
+
+    const [message, setMessage] = useState('')
     
 
     useEffect(() => {
@@ -22,11 +24,16 @@ const RecipeForm = () => {
     }, [listIngredient, ingredient, quantity, unit, listSteps])
 
     const createIngredient = () => {
-        let wholeIngredient = { ingredient, quantity, unit }
-        setListIngredient([...listIngredient, wholeIngredient])
-        setIngredient('Ingrédient')
-        setQuantity('Quantité')
-        setUnit('Unité')
+        if( ingredient === '' && quantity === '' ) {
+            alert("L'ingrédient et la quantité n'ont pas été renseignés")           
+        } else if (ingredient === '') {
+            alert("L'ingrédient n'a pas été renseigné")
+        } else if (quantity === '') {
+            alert("La quantité n'a pas été renseigné")
+        } else {
+            let wholeIngredient = { ingredient, quantity, unit }
+            setListIngredient([...listIngredient, wholeIngredient])            
+        }            
     }
 
     const deleteIngredient = (index) => {
@@ -44,17 +51,19 @@ const RecipeForm = () => {
     }
 
     const createStep = () => {
-        if (nbStep > 0 ) {
+        if (step === '') {
+            alert("Aucune étape n'a été ajoutée")
+        } else if (nbStep > 0) {
             let number = nbStep
             let newStep = {number,step}
             setListSteps([...listSteps, newStep])
             setNbStep(0)
-            setSteps('Ajouter une étape') 
+            setSteps('') 
         } else {
             let number = listSteps.length + 1
             let newStep = {number,step}
             setListSteps([...listSteps,newStep])
-            setSteps('Ajouter une étape') 
+            setSteps('') 
         }
                
     }
@@ -63,7 +72,7 @@ const RecipeForm = () => {
         const newList = listSteps.filter((item, i) => i !== index.i)
         const lastOfNewList = newList.length - 1
         const lastOfListStep = listSteps.length - 1
-        if (newList[lastOfNewList].step == listSteps[lastOfListStep].step) {
+        if ( listSteps.length > 1 && newList[lastOfNewList].step == listSteps[lastOfListStep].step) {
             newList.map((e) => {
                 if (e.number > 1 ) {
                     e.number -= 1
@@ -75,18 +84,18 @@ const RecipeForm = () => {
 
     const modifyStep = (index) => {
         const modification = listSteps.filter((item, i) => i == index.i)
-        console.log(modification[0].number)
         setNbStep(modification[0].number)
         setSteps(modification[0].step)
         deleteStep(index)
     }
+
 
     let sortedArray = listSteps.sort((a,b) => (a.number > b.number) ? 1 : -1)
 
 
     return (
         <div>
-            <input type='text' value={title} onChange={e => setTitle(e.target.value)}></input>
+            <input type='text' placeholder="Title" onClick={() => setTitle('')} onChange={e => setTitle(e.target.value)}></input>
 
             <section className='time'>
                 <div>
@@ -118,9 +127,9 @@ const RecipeForm = () => {
             }
 
             <section className='ingredient'>
-                <input type='text' value={ingredient} onChange={e => setIngredient(e.target.value)}></input>
-                <input type='text' value={quantity} onChange={e => setQuantity(Number(e.target.value))}></input>
-                <input type='text' value={unit} onChange={e => setUnit(e.target.value)}></input>
+                <input type='text' placeholder='Ingrédient' value={ingredient} onChange={e => setIngredient(e.target.value)}></input>
+                <input type='number' placeholder='Quantité' value={quantity} step ='any' onChange={e => setQuantity(e.target.value)}></input>
+                <input type='text' placeholder='Unité' value={unit} onChange={e => setUnit(e.target.value)}></input>
                 <input type='button' value='+' onClick={() => createIngredient()}></input>
             </section>
 
@@ -138,9 +147,15 @@ const RecipeForm = () => {
             }
 
             <section className='step'>
-                <input type='text' value={step} onChange={e => setSteps(e.target.value)}></input>
+                <input type='text' placeholder='Ajouter une étape' value={step} onChange={e => setSteps(e.target.value)}></input>
                 <input type='button' value='+' onClick={() => createStep()}></input>
             </section>
+
+            <section className='message'>
+                <input type='text' placeholder='Ajouter un message' onChange={e => setMessage(e.target.value)}></input>
+            </section>
+
+            <input type='button' value='Publier'></input>
 
 
         </div>
