@@ -3,17 +3,33 @@ import React, { useState, useEffect } from 'react'
 const RecipeForm = () => {
     const [title, setTitle] = useState('Titre')
 
-    const [nbEaters, setNbEaters] = useState(null)
-    const [prepTime, setPrepTime] = useState(null)
-    const [cookTime, setCookTime] = useState(null)
+    const [nbEaters, setNbEaters] = useState(undefined)
+    const [prepTime, setPrepTime] = useState(undefined)
+    const [cookTime, setCookTime] = useState(undefined)
 
+    const [number, setNumber]= useState(1)
     const [ingredient, setIngredient] = useState('Ingrédient')
     const [quantity, setQuantity] = useState('Quantité')
     const [unit, setUnit] = useState('Unité')
+    const [listIngredient, setListIngredient]= useState([])
+    
+    
+    useEffect(() => {
+        console.log(listIngredient)
+    }, [listIngredient, ingredient,quantity,unit])
+
+    const createIngredient = () => {
+        let wholeIngredient = {ingredient, quantity, unit}
+        setListIngredient([...listIngredient, wholeIngredient])
+        setIngredient('Ingrédient')
+        setQuantity('Quantité')
+        setUnit('Unité')    
+    }
+    
 
     return (
         <div>
-            <input type='text' value={title}></input>
+            <input type='text' value={title} onChange={e => setTitle(e.target.value)}></input>
 
             <section className ='time'>
                 <div>
@@ -30,12 +46,19 @@ const RecipeForm = () => {
                 </div>
             </section>
 
+            {/* { listIngredient.length > 0 ?
+                (<div> 
+                {listIngredient} 
+                <input type='button' value='-'></input>
+                </div>)
+                : console.log('rien')
+            } */}
+
             <section className='ingredient'>
                 <input type='text' value={ingredient} onChange={e => setIngredient(e.target.value)}></input>
-                <input type='text' value={quantity} onChange={e => setQuantity(e.target.value)}></input>
+                <input type='text' value={quantity} onChange={e => setQuantity(Number(e.target.value))}></input>
                 <input type='text' value={unit} onChange={e => setUnit(e.target.value)}></input>
-                <input type='button' value='+'></input>
-
+                <input type='button' value='+' onClick ={() => createIngredient()}></input>
             </section>
 
 
