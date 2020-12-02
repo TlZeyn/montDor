@@ -19,7 +19,7 @@ const RecipeForm = () => {
 
     useEffect(() => {
 
-    }, [listIngredient, ingredient, quantity, unit])
+    }, [listIngredient, ingredient, quantity, unit, listSteps])
 
     const createIngredient = () => {
         let wholeIngredient = { ingredient, quantity, unit }
@@ -71,6 +71,8 @@ const RecipeForm = () => {
         setSteps(modification[0].step)
         deleteStep(index)
     }
+
+    let sortedArray = listSteps.sort((a,b) => (a.number > b.number) ? 1 : -1)
 
 
     return (
