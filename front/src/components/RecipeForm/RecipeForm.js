@@ -15,7 +15,7 @@ const RecipeForm = () => {
     
     
     useEffect(() => {
-        console.log(listIngredient)
+        
     }, [listIngredient, ingredient,quantity,unit])
 
     const createIngredient = () => {
@@ -46,13 +46,24 @@ const RecipeForm = () => {
                 </div>
             </section>
 
-            {/* { listIngredient.length > 0 ?
-                (<div> 
-                {listIngredient} 
-                <input type='button' value='-'></input>
-                </div>)
+            { listIngredient.length > 0 ?
+                <div>{listIngredient.map((item) => 
+                    <div>
+                        <input type='text' value={item.ingredient} readOnly></input>
+                        <input type='text' value={item.quantity} readOnly></input>
+                        <input type='text' value={item.unit} readOnly></input>
+                        <input type='button' value='-'></input>
+            
+                    </div>
+
+
+
+                )}</div>
+
+                
+                
                 : console.log('rien')
-            } */}
+            }
 
             <section className='ingredient'>
                 <input type='text' value={ingredient} onChange={e => setIngredient(e.target.value)}></input>
