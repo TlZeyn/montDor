@@ -60,8 +60,13 @@ const RecipeForm = () => {
     }
 
     const deleteStep = (index) => {
-    const newList = listSteps.filter((item, i) => i !== index.i)
-    setListSteps(newList)
+        const newList = listSteps.filter((item, i) => i !== index.i)
+        newList.map((e) => {
+            if (e.number > 1) {
+                e.number -= 1
+            }
+        })
+        setListSteps(newList)
     }
 
     const modifyStep = (index) => {
@@ -122,7 +127,7 @@ const RecipeForm = () => {
                         <li>{item.number}</li>
                         <li>{item.step}</li>
                         <input type='button' value='modifier' onClick={() => modifyStep({ i })}></input>
-                        <input type='button' value='-'></input>
+                        <input type='button' value='-'  onClick={() => deleteStep({ i })}></input>
                     </div>
                 )}</div>
                 : ''
