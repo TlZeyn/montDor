@@ -25,6 +25,18 @@ const RecipeForm = () => {
         setQuantity('Quantité')
         setUnit('Unité')    
     }
+
+    const modifyIngredient = (index) => {
+        const newList = listIngredient.filter((item,i) => listIngredient[i] != index )
+        
+    }
+
+    const deleteIngredient = (index) => {
+        const newList = listIngredient.filter((item,i) => i !== index.i )
+        setListIngredient(newList)
+        
+    }
+
     
 
     return (
@@ -47,17 +59,15 @@ const RecipeForm = () => {
             </section>
 
             { listIngredient.length > 0 ?
-                <div>{listIngredient.map((item) => 
+                <div>{listIngredient.map((item,i) => 
                     <div>
-                        <input type='text' value={item.ingredient} readOnly></input>
-                        <input type='text' value={item.quantity} readOnly></input>
-                        <input type='text' value={item.unit} readOnly></input>
-                        <input type='button' value='-'></input>
-            
+                        <input type='text' value={i} readOnly></input>
+                        <input type='text' value={item.ingredient}></input>
+                        <input type='text' value={item.quantity}></input>
+                        <input type='text' value={item.unit} ></input>
+                        <input type='button' value='edit' onClick={ () => modifyIngredient({i})}></input>
+                        <input type='button' value='-' onClick={() => deleteIngredient({i})}></input>            
                     </div>
-
-
-
                 )}</div>
 
                 
