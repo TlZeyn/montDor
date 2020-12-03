@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
+import './RecipeForm.css'
+
 const RecipeForm = () => {
     const [title, setTitle] = useState('Titre')
 
@@ -64,8 +66,7 @@ const RecipeForm = () => {
             let newStep = {number,step}
             setListSteps([...listSteps,newStep])
             setSteps('') 
-        }
-               
+        }               
     }
 
     const deleteStep = (index) => {
@@ -94,10 +95,10 @@ const RecipeForm = () => {
 
 
     return (
-        <div>
-            <input type='text' placeholder="Title" onClick={() => setTitle('')} onChange={e => setTitle(e.target.value)}></input>
+        <div id='recipeForm'>
+            <input id='recipeForm_title' type='text' placeholder="Title" onClick={() => setTitle('')} onChange={e => setTitle(e.target.value)}></input>
 
-            <section className='time'>
+            <section id='recipeForm_timeSlot'>
                 <div>
                     <label>Nombre d'aventuriers</label>
                     <input type='number' value={nbEaters} onChange={e => setNbEaters(e.target.value)}></input>
@@ -114,19 +115,20 @@ const RecipeForm = () => {
 
 
             { listIngredient.length > 0 ?
-                <div>{listIngredient.map((item, i) =>
-                    <div>
-                        <li>{item.ingredient}</li>
-                        <li>{item.quantity}</li>
-                        <li>{item.unit}</li>
-                        <input type='button' value='modifier' onClick={() => modifyIngredient({ i })}></input>
-                        <input type='button' value='-' onClick={() => deleteIngredient({ i })}></input>
-                    </div>
-                )}</div>
+                <section id='recipeForm_listIngredient'>
+                    {listIngredient.map((item, i) =>
+                        <div>
+                            <li>{item.ingredient}</li>
+                            <li>{item.quantity}</li>
+                            <li>{item.unit}</li>
+                            <input type='button' value='modifier' onClick={() => modifyIngredient({ i })}></input>
+                            <input type='button' value='-' onClick={() => deleteIngredient({ i })}></input>
+                        </div>
+                )}</section>
                 : ''
             }
 
-            <section className='ingredient'>
+            <section id='recipeForm_addIngredient'>
                 <input type='text' placeholder='Ingrédient' value={ingredient} onChange={e => setIngredient(e.target.value)}></input>
                 <input type='number' placeholder='Quantité' value={quantity} step ='any' onChange={e => setQuantity(e.target.value)}></input>
                 <input type='text' placeholder='Unité' value={unit} onChange={e => setUnit(e.target.value)}></input>
@@ -135,23 +137,24 @@ const RecipeForm = () => {
 
 
             { listSteps.length > 0 ?
-                <div>{listSteps.map((item, i) =>
-                    <div>
-                        <li>{item.number}</li>
-                        <li>{item.step}</li>
-                        <input type='button' value='modifier' onClick={() => modifyStep({ i })}></input>
-                        <input type='button' value='-'  onClick={() => deleteStep({ i })}></input>
+                <section id='recipeForm_listStep'>
+                    {listSteps.map((item, i) =>
+                        <div>
+                            <li>{item.number}</li>
+                            <li>{item.step}</li>
+                            <input type='button' value='modifier' onClick={() => modifyStep({ i })}></input>
+                            <input type='button' value='-'  onClick={() => deleteStep({ i })}></input>
                     </div>
-                )}</div>
+                )}</section>
                 : ''
             }
 
-            <section className='step'>
+            <section id='recipeForm_addStep'>
                 <input type='text' placeholder='Ajouter une étape' value={step} onChange={e => setSteps(e.target.value)}></input>
                 <input type='button' value='+' onClick={() => createStep()}></input>
             </section>
 
-            <section className='message'>
+            <section id='recipeForm_message'>
                 <input type='text' placeholder='Ajouter un message' onChange={e => setMessage(e.target.value)}></input>
             </section>
 

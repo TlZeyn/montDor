@@ -1,0 +1,12 @@
+#recipeForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#recipeForm_title {
+    background :transparent;
+    border : none;
+    text-align: center;
+    margin : 5% 20% 5% 20%;
+    font-size : 2rem;    
+}
