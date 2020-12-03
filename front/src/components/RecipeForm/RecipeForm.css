@@ -1,12 +1,78 @@
 #recipeForm {
     display: flex;
     flex-direction: column;
+    background-color : #C7A489;
+}
+
+.recipeForm-button {
+    background-color : #3E2715;
+    font-size : 2rem;
+    color : yellow;
 }
 
 #recipeForm_title {
     background :transparent;
     border : none;
     text-align: center;
-    margin : 5% 20% 5% 20%;
+    margin : 3% 20% 3% 20%;
     font-size : 2rem;    
+}
+
+
+
+#recipeForm_timeSlot {
+    background-color : pink;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.recipeForm_timeSlot_group-input {
+    margin: 2%;
+    padding: 1%;
+    background-color : #A38E7D;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recipeForm_timeSlot-input {
+    width : 3rem;
+    height : 1.5rem;
+    text-align: center;   
+    font-size : 1rem;
+    
+    
+}
+
+#recipeForm_addIngredient {
+    background-color: lightblue;
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+    
+}
+#recipeForm_addIngredient input {
+    font-size : 1rem;
+    padding : 1%;
+    ;
+    border : none;
+}
+
+.recipeForm_addIngredient-input-igr {
+    width : 50%;
+    background-color : #A38E7D
+}
+
+.recipeForm_addIngredient-input-qty {
+    width: 20%;
+    text-align: center;
+    background-color : #A38E7D
+}
+
+.recipeForm_addIngredient-input-unt {
+    width: 5%;
+    text-align: center;
+    background-color : #A38E7D
 }

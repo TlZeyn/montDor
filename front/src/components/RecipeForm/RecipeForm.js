@@ -99,17 +99,17 @@ const RecipeForm = () => {
             <input id='recipeForm_title' type='text' placeholder="Title" onClick={() => setTitle('')} onChange={e => setTitle(e.target.value)}></input>
 
             <section id='recipeForm_timeSlot'>
-                <div>
+                <div className='recipeForm_timeSlot_group-input'>
                     <label>Nombre d'aventuriers</label>
-                    <input type='number' value={nbEaters} onChange={e => setNbEaters(e.target.value)}></input>
+                    <input className='recipeForm_timeSlot-input' type='number' value={nbEaters} onChange={e => setNbEaters(e.target.value)}></input>
                 </div>
-                <div>
-                    <label>Temps de préparation (en minutes) </label>
-                    <input type='number' value={prepTime} onChange={e => setPrepTime(e.target.value)}></input>
+                <div className='recipeForm_timeSlot_group-input'>
+                    <label>Temps de préparation </label>
+                    <input className='recipeForm_timeSlot-input' placeholder="min" type='number' value={prepTime} onChange={e => setPrepTime(e.target.value)}></input>
                 </div>
-                <div>
-                    <label>Temps de cuisson (en minutes) </label>
-                    <input type='number' value={cookTime} onChange={e => setCookTime(e.target.value)}></input>
+                <div className='recipeForm_timeSlot_group-input'>
+                    <label>Temps de cuisson </label>
+                    <input className='recipeForm_timeSlot-input' placeholder="min" type='number' value={cookTime} onChange={e => setCookTime(e.target.value)}></input>
                 </div>
             </section>
 
@@ -129,10 +129,10 @@ const RecipeForm = () => {
             }
 
             <section id='recipeForm_addIngredient'>
-                <input type='text' placeholder='Ingrédient' value={ingredient} onChange={e => setIngredient(e.target.value)}></input>
-                <input type='number' placeholder='Quantité' value={quantity} step ='any' onChange={e => setQuantity(e.target.value)}></input>
-                <input type='text' placeholder='Unité' value={unit} onChange={e => setUnit(e.target.value)}></input>
-                <input type='button' value='+' onClick={() => createIngredient()}></input>
+                <input className='recipeForm_addIngredient-input-igr' type='text' placeholder='Ingrédient' value={ingredient} onChange={e => setIngredient(e.target.value)}></input>
+                <input className='recipeForm_addIngredient-input-qty' type='number' placeholder='Quantité' value={quantity} step ='any' onChange={e => setQuantity(e.target.value)}></input>
+                <input className='recipeForm_addIngredient-input-unt' type='text' placeholder='Unité' value={unit} onChange={e => setUnit(e.target.value)}></input>
+                <input className='recipeForm-button' type='button' value='+' onClick={() => createIngredient()}></input>
             </section>
 
 
