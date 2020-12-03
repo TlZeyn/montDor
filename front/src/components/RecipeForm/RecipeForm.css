@@ -46,14 +46,14 @@
     
 }
 
-#recipeForm_addIngredient {
+.recipeForm_addIngredient {
     background-color: lightblue;
     display: flex;
     justify-content: space-between;
     padding: 2%;
     
 }
-#recipeForm_addIngredient input {
+.recipeForm_addIngredient input {
     font-size : 1rem;
     padding : 1%;
     ;
