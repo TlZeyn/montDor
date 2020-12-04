@@ -37,17 +37,17 @@ const UploadFront = () => {
                         <img className='testFit' src={image.preview} alt="dummy" width="100%" height="100%" />
                     ) : (
 
-                            
-                                <p>Ajouter une photo</p>
-                           
+
+                            <p>Ajouter une photo</p>
+
 
                         )}
                 </div>
 
             </label>
             <div className='avatar'>
-                    <img className='uploadFront_avatar' src='https://via.placeholder.com/150'/>
-                </div>
+                <img className='uploadFront_avatar' src='https://via.placeholder.com/150' />
+            </div>
             <input
                 type="file"
                 id="upload-button"

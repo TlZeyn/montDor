@@ -100,73 +100,113 @@ const RecipeForm = () => {
 
     let sortedArray = listSteps.sort((a, b) => (a.number > b.number) ? 1 : -1)
 
+    
+
+    const restoreSettingsIngredient = () => {
+        document.getElementById('recipeForm_addIngredient').style.borderStyle = 'none';
+    }
+
+    const restoreSettingsStep = () => {
+        document.getElementById('recipeForm_step').style.borderStyle = 'none';
+    }
+
+    const recipeData = (e) => {
+        let data = []
+        //verify that all informations are filled OK
+        //create object data
+        //send object to back with axios
+        e.preventDefault();
+        if (listIngredient.length < 1) {
+            document.getElementById('recipeForm_addIngredient').style.borderStyle = 'solid';
+            document.getElementById('recipeForm_addIngredient').style.borderWidth = '1px';
+            document.getElementById('recipeForm_addIngredient').style.borderColor = 'red';
+        } if(listSteps.length < 1 ) {
+            document.getElementById('recipeForm_step').style.borderStyle = 'solid';
+            document.getElementById('recipeForm_step').style.borderWidth = '1px';
+            document.getElementById('recipeForm_step').style.borderColor = 'red';
+        }
+        
+        else {
+            console.log(data)
+        }
+    }
 
     return (
         <div id='recipeForm'>
-            <UploadFront />
-            <input id='recipeForm_title' type='text' placeholder="Title" onClick={() => setTitle('')} onChange={e => setTitle(e.target.value)}></input>
+            <form onSubmit={recipeData}>
+                <UploadFront />
 
-            <section id='recipeForm_timeSlot'>
-                <div className='recipeForm_timeSlot_group-input'>
-                    <label>Nombre d'aventuriers</label>
-                    <input  className='recipeForm_timeSlot-input' type='number' value={nbEaters} onChange={e => setNbEaters(e.target.value)}></input>
+                <div className='recipeForm_title-group'>
+                    <input id='recipeForm_title' type='text' placeholder="Title" onClick={() => setTitle('')} onChange={e => setTitle(e.target.value)} required></input>
                 </div>
-                <div className='recipeForm_timeSlot_group-input'>
-                    <label>Temps de préparation </label>
-                    <input className='recipeForm_timeSlot-input' placeholder="min" type='number' value={prepTime} onChange={e => setPrepTime(e.target.value)}></input>
+
+
+
+
+                <section id='recipeForm_timeSlot'>
+                    <div className='recipeForm_timeSlot_group-input'>
+                        <label>Nombre d'aventuriers</label>
+                        <input className='recipeForm_timeSlot-input' min='1' type='number' value={nbEaters} onChange={e => setNbEaters(e.target.value)} required></input>
+                    </div>
+                    <div className='recipeForm_timeSlot_group-input'>
+                        <label>Temps de préparation </label>
+                        <input className='recipeForm_timeSlot-input' min='1' placeholder="min" type='number' value={prepTime} onChange={e => setPrepTime(e.target.value)} required></input>
+                    </div>
+                    <div className='recipeForm_timeSlot_group-input'>
+                        <label>Temps de cuisson </label>
+                        <input className='recipeForm_timeSlot-input' min='1' placeholder="min" type='number' value={cookTime} onChange={e => setCookTime(e.target.value)} required ></input>
+                    </div>
+                </section>
+
+
+                {listIngredient.length > 0 ?
+                    <div>
+                        {listIngredient.map((item, i) =>
+                            <section>
+                                <input className='recipeForm_addIngredient-input-igr' type='text' type='text' value={item.ingredient} onClick={() => modifyIngredient({ i })}></input>
+                                <input className='recipeForm_addIngredient-input-qty' type='number' value={item.quantity} step='any' onClick={() => modifyIngredient({ i })}></input>
+                                <input className='recipeForm_addIngredient-input-unt' type='text' value={item.unit} onClick={() => modifyIngredient({ i })} ></input>
+                                <input className='recipeForm-button' type='button' value='-' onClick={() => deleteIngredient({ i })}></input>
+                            </section>
+                        )}</div>
+                    : ''
+                }
+
+                <section id='recipeForm_addIngredient'>
+                    <input className='recipeForm_addIngredient-input-igr' type='text' placeholder='Ingrédient' value={ingredient} onChange={e => setIngredient(e.target.value)} onClick={() => restoreSettingsIngredient()} ></input>
+                    <input className='recipeForm_addIngredient-input-qty' type='number' placeholder='Quantité' value={quantity} step='any' onChange={e => setQuantity(e.target.value)} onClick={() => restoreSettingsIngredient()}></input>
+                    <input className='recipeForm_addIngredient-input-unt' type='text' placeholder='Unité' value={unit} onChange={e => setUnit(e.target.value)}></input>
+                    <input type='button' value='+' onClick={() => createIngredient()}></input>
+                </section>
+
+
+
+                {listSteps.length > 0 ?
+                    <div>
+                        {listSteps.map((item, i) =>
+                            <section>
+                                <input className='recipeForm_step-input' type='text' value={item.number + '.' + item.step} onClick={() => modifyStep({ i })}></input>
+                                <input className='recipeForm-button' type='button' value='-' onClick={() => deleteStep({ i })}></input>
+                            </section>
+                        )}</div>
+                    : ''
+                }
+
+                <section id='recipeForm_step'>
+                    <input className='recipeForm_step-input' type='text' placeholder='Ajouter une étape' value={step} onChange={e => setSteps(e.target.value)} onClick = {() => restoreSettingsStep()}></input>
+                    <input type='button' value='+' onClick={() => createStep()}></input>
+                </section>
+
+                <section id='recipeForm_message'>
+                    <textarea maxlength='100' placeholder='Ajouter un message' onChange={e => setMessage(e.target.value)}></textarea>
+                </section>
+
+                <div id='recipeForm-button'>
+                    <input id='recipeForm-button--input' type='submit' value='Publier'></input>
                 </div>
-                <div className='recipeForm_timeSlot_group-input'>
-                    <label>Temps de cuisson </label>
-                    <input className='recipeForm_timeSlot-input' placeholder="min" type='number' value={cookTime} onChange={e => setCookTime(e.target.value)}></input>
-                </div>
-            </section>
 
+            </form>
 
-            {listIngredient.length > 0 ?
-                <div>
-                    {listIngredient.map((item, i) =>
-                        <section>
-                            <input className='recipeForm_addIngredient-input-igr' type='text' type='text' value={item.ingredient} onClick={() => modifyIngredient({ i })} ></input>
-                            <input className='recipeForm_addIngredient-input-qty' type='number' value={item.quantity} step='any' onClick={() => modifyIngredient({ i })}></input>
-                            <input className='recipeForm_addIngredient-input-unt' type='text' value={item.unit} onClick={() => modifyIngredient({ i })} ></input>
-                            <input className='recipeForm-button' type='button' value='-' onClick={() => deleteIngredient({ i })}></input>
-                        </section>
-                    )}</div>
-                : ''
-            }
-
-            <section className='recipeForm_addIngredient'>
-                <input className='recipeForm_addIngredient-input-igr' type='text' placeholder='Ingrédient' value={ingredient} onChange={e => setIngredient(e.target.value)}></input>
-                <input className='recipeForm_addIngredient-input-qty' type='number' placeholder='Quantité' value={quantity} step='any' onChange={e => setQuantity(e.target.value)}></input>
-                <input className='recipeForm_addIngredient-input-unt' type='text' placeholder='Unité' value={unit} onChange={e => setUnit(e.target.value)}></input>
-                <input type='button' value='+' onClick={() => createIngredient()}></input>
-            </section>
-
-
-            { listSteps.length > 0 ?
-                <div>
-                    {listSteps.map((item, i) =>
-                        <section className='recipeForm_step'>
-                            <input className='recipeForm_step-input' type='text' value={item.number + '.' + item.step} onClick={() => modifyStep({ i })}></input>
-                            <input className='recipeForm-button' type='button' value='-' onClick={() => deleteStep({ i })}></input>
-                        </section>
-                    )}</div>
-                : ''
-            }
-
-            <section className='recipeForm_step'>
-                <input className='recipeForm_step-input' type='text' placeholder='Ajouter une étape' value={step} onChange={e => setSteps(e.target.value)}></input>
-                <input type='button' value='+' onClick={() => createStep()}></input>
-            </section>
-
-            <section id='recipeForm_message'>
-                <textarea maxlength='100' placeholder='Ajouter un message' onChange={e => setMessage(e.target.value)}></textarea>
-            </section>
-
-            <div id='recipeForm-button'>
-                <input id='recipeForm-button--input' type='button' value='Publier'></input>
-            </div>
-            
         </div>
     )
 }
