@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import UploadFront from '../UploadFront/UploadFront'
+import axios from 'axios'
 
 import './RecipeForm.css'
+
+
 
 const RecipeForm = () => {
     const [title, setTitle] = useState('Titre')
@@ -19,7 +22,7 @@ const RecipeForm = () => {
     const [listSteps, setListSteps] = useState([])
     const [nbStep, setNbStep] = useState(0)
 
-    const [message, setMessage] = useState('')
+    const [message, setMessage] = useState(null)
 
 
     useEffect(() => {
@@ -100,7 +103,7 @@ const RecipeForm = () => {
 
     let sortedArray = listSteps.sort((a, b) => (a.number > b.number) ? 1 : -1)
 
-    
+
 
     const restoreSettingsIngredient = () => {
         document.getElementById('recipeForm_addIngredient').style.borderStyle = 'none';
@@ -120,14 +123,29 @@ const RecipeForm = () => {
             document.getElementById('recipeForm_addIngredient').style.borderStyle = 'solid';
             document.getElementById('recipeForm_addIngredient').style.borderWidth = '1px';
             document.getElementById('recipeForm_addIngredient').style.borderColor = 'red';
-        } if(listSteps.length < 1 ) {
+        } if (listSteps.length < 1) {
             document.getElementById('recipeForm_step').style.borderStyle = 'solid';
             document.getElementById('recipeForm_step').style.borderWidth = '1px';
             document.getElementById('recipeForm_step').style.borderColor = 'red';
         }
-        
         else {
-            console.log(data)
+            // data = [{title}, {nbEaters}, {prepTime}, {cookTime}, {listIngredient}, {listSteps}]
+            // console.log(data)
+            
+
+            axios.post('http://localhost:5000/createRecipes', {
+                title: title,
+                nbEaters: nbEaters,
+                prepTime: prepTime,
+                cookTime: cookTime,
+                listIngredient: listIngredient,
+                listSteps: listSteps
+            })
+            .then((response) => {
+                console.log(response);
+            }, (error) => {
+                console.log(error)
+            });
         }
     }
 
@@ -193,7 +211,7 @@ const RecipeForm = () => {
                 }
 
                 <section id='recipeForm_step'>
-                    <input className='recipeForm_step-input' type='text' placeholder='Ajouter une étape' value={step} onChange={e => setSteps(e.target.value)} onClick = {() => restoreSettingsStep()}></input>
+                    <input className='recipeForm_step-input' type='text' placeholder='Ajouter une étape' value={step} onChange={e => setSteps(e.target.value)} onClick={() => restoreSettingsStep()}></input>
                     <input type='button' value='+' onClick={() => createStep()}></input>
                 </section>
 
