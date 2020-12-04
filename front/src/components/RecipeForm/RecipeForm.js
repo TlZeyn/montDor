@@ -107,7 +107,7 @@ const RecipeForm = () => {
             <section id='recipeForm_timeSlot'>
                 <div className='recipeForm_timeSlot_group-input'>
                     <label>Nombre d'aventuriers</label>
-                    <input className='recipeForm_timeSlot-input' type='number' value={nbEaters} onChange={e => setNbEaters(e.target.value)}></input>
+                    <input  className='recipeForm_timeSlot-input' type='number' value={nbEaters} onChange={e => setNbEaters(e.target.value)}></input>
                 </div>
                 <div className='recipeForm_timeSlot_group-input'>
                     <label>Temps de préparation </label>
@@ -120,16 +120,16 @@ const RecipeForm = () => {
             </section>
 
 
-            { listIngredient.length > 0 ?
-                <section id='recipeForm_listIngredient'>
+            {listIngredient.length > 0 ?
+                <div>
                     {listIngredient.map((item, i) =>
-                        <div className='recipeForm_addIngredient'>
-                            <input className='recipeForm_addIngredient-input-igr' type='text' value={item.ingredient} onClick={() => modifyIngredient({ i })} ></input>
-                            <input className='recipeForm_addIngredient-input-qty' type='number' value={item.quantity} step='any' ></input>
-                            <input className='recipeForm_addIngredient-input-unt' type='text' value={item.unit} ></input>
-                            <input type='button' value='-' onClick={() => deleteIngredient({ i })}></input>
-                        </div>
-                    )}</section>
+                        <section>
+                            <input className='recipeForm_addIngredient-input-igr' type='text' type='text' value={item.ingredient} onClick={() => modifyIngredient({ i })} ></input>
+                            <input className='recipeForm_addIngredient-input-qty' type='number' value={item.quantity} step='any' onClick={() => modifyIngredient({ i })}></input>
+                            <input className='recipeForm_addIngredient-input-unt' type='text' value={item.unit} onClick={() => modifyIngredient({ i })} ></input>
+                            <input className='recipeForm-button' type='button' value='-' onClick={() => deleteIngredient({ i })}></input>
+                        </section>
+                    )}</div>
                 : ''
             }
 
@@ -137,35 +137,34 @@ const RecipeForm = () => {
                 <input className='recipeForm_addIngredient-input-igr' type='text' placeholder='Ingrédient' value={ingredient} onChange={e => setIngredient(e.target.value)}></input>
                 <input className='recipeForm_addIngredient-input-qty' type='number' placeholder='Quantité' value={quantity} step='any' onChange={e => setQuantity(e.target.value)}></input>
                 <input className='recipeForm_addIngredient-input-unt' type='text' placeholder='Unité' value={unit} onChange={e => setUnit(e.target.value)}></input>
-                <input className='recipeForm-button' type='button' value='+' onClick={() => createIngredient()}></input>
+                <input type='button' value='+' onClick={() => createIngredient()}></input>
             </section>
 
 
             { listSteps.length > 0 ?
-                <section id='recipeForm_listStep'>
+                <div>
                     {listSteps.map((item, i) =>
-                        <div>
-                            <li>{item.number}</li>
-                            <li>{item.step}</li>
-                            <input type='button' value='modifier' onClick={() => modifyStep({ i })}></input>
-                            <input type='button' value='-' onClick={() => deleteStep({ i })}></input>
-                        </div>
-                    )}</section>
+                        <section className='recipeForm_step'>
+                            <input className='recipeForm_step-input' type='text' value={item.number + '.' + item.step} onClick={() => modifyStep({ i })}></input>
+                            <input className='recipeForm-button' type='button' value='-' onClick={() => deleteStep({ i })}></input>
+                        </section>
+                    )}</div>
                 : ''
             }
 
-            <section id='recipeForm_addStep'>
-                <input type='text' placeholder='Ajouter une étape' value={step} onChange={e => setSteps(e.target.value)}></input>
+            <section className='recipeForm_step'>
+                <input className='recipeForm_step-input' type='text' placeholder='Ajouter une étape' value={step} onChange={e => setSteps(e.target.value)}></input>
                 <input type='button' value='+' onClick={() => createStep()}></input>
             </section>
 
             <section id='recipeForm_message'>
-                <input type='text' placeholder='Ajouter un message' onChange={e => setMessage(e.target.value)}></input>
+                <textarea maxlength='100' placeholder='Ajouter un message' onChange={e => setMessage(e.target.value)}></textarea>
             </section>
 
-            <input type='button' value='Publier'></input>
-
-
+            <div id='recipeForm-button'>
+                <input id='recipeForm-button--input' type='button' value='Publier'></input>
+            </div>
+            
         </div>
     )
 }

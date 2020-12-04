@@ -4,11 +4,27 @@
     background-color : #C7A489;
 }
 
-.recipeForm-button {
+#recipeForm section {
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+}
+
+#recipeForm section input[type=text], input[type=number], textarea  {
+    background-color:  #A38E7D;
+    font-size : 1rem;
+    padding: 1%;
+    border: none;
+}
+
+#recipeForm section input[type=button] {
     background-color : #3E2715;
     font-size : 2rem;
     color : yellow;
+    border : none;
+    padding : 0.5%;
 }
+
 
 #recipeForm_title {
     background :transparent;
@@ -18,17 +34,15 @@
     font-size : 2rem;    
 }
 
-
-
-#recipeForm_timeSlot {
-    background-color : pink;
-    display: flex;
-    flex-direction: row;
-
+#recipeForm_timeSlot input {
+    background-color : #E0D5CC;
+    width : 3rem;
+    height : 1.5rem;
+    text-align: center;
+    border : none;
 }
 
 .recipeForm_timeSlot_group-input {
-    margin: 2%;
     padding: 1%;
     background-color : #A38E7D;
     width: 30%;
@@ -37,42 +51,47 @@
     align-items: center;
 }
 
-.recipeForm_timeSlot-input {
-    width : 3rem;
-    height : 1.5rem;
-    text-align: center;   
-    font-size : 1rem;
-    
-    
-}
-
-.recipeForm_addIngredient {
-    background-color: lightblue;
-    display: flex;
-    justify-content: space-between;
-    padding: 2%;
-    
-}
-.recipeForm_addIngredient input {
-    font-size : 1rem;
-    padding : 1%;
-    ;
-    border : none;
-}
 
 .recipeForm_addIngredient-input-igr {
     width : 50%;
-    background-color : #A38E7D
 }
 
 .recipeForm_addIngredient-input-qty {
     width: 20%;
     text-align: center;
-    background-color : #A38E7D
 }
 
 .recipeForm_addIngredient-input-unt {
     width: 5%;
     text-align: center;
-    background-color : #A38E7D
+    
 }
+.recipeForm_step-input {
+    width: 90%;
+    
+}
+
+#recipeForm_message textarea {
+    width: 100%;
+    height: 5rem;
+    
+}
+
+#recipeForm-button {
+    padding: 2%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#recipeForm-button input{
+    padding: 1%;
+    width : 10rem;
+    height : 3rem;
+    font-size: 1rem;
+    background-color: #F0BC1E;
+    color: #3E2715;
+    border: none;
+}
+
+
+
