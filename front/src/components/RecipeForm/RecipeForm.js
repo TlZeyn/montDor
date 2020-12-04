@@ -27,7 +27,7 @@ const RecipeForm = () => {
 
     useEffect(() => {
 
-    }, [listIngredient, ingredient, quantity, unit, listSteps])
+    }, [ingredient, quantity, unit])
 
     const createIngredient = () => {
         if (ingredient === '' && quantity === '') {
@@ -83,7 +83,7 @@ const RecipeForm = () => {
         const newList = listSteps.filter((item, i) => i !== index.i)
         const lastOfNewList = newList.length - 1
         const lastOfListStep = listSteps.length - 1
-        if (listSteps.length > 1 && newList[lastOfNewList].step == listSteps[lastOfListStep].step) {
+        if (listSteps.length > 1 && newList[lastOfNewList].step == listSteps[lastOfListStep].step ) {
             newList.map((e) => {
                 if (e.number > 1) {
                     e.number -= 1
@@ -94,16 +94,18 @@ const RecipeForm = () => {
     }
 
     const modifyStep = (index) => {
-        const modification = listSteps.filter((item, i) => i == index.i)
-        setNbStep(modification[0].number)
-        setSteps(modification[0].step)
-        deleteStep(index)
+        if (step == '') {
+            const modification = listSteps.filter((item, i) => i == index.i)
+            setNbStep(modification[0].number)
+            setSteps(modification[0].step)
+            const newList = listSteps.filter((item, i) => i !== index.i)
+            setListSteps(newList)
+
+        }
+
     }
 
-
     let sortedArray = listSteps.sort((a, b) => (a.number > b.number) ? 1 : -1)
-
-
 
     const restoreSettingsIngredient = () => {
         document.getElementById('recipeForm_addIngredient').style.borderStyle = 'none';
@@ -131,7 +133,7 @@ const RecipeForm = () => {
         else {
             // data = [{title}, {nbEaters}, {prepTime}, {cookTime}, {listIngredient}, {listSteps}]
             // console.log(data)
-            
+
 
             axios.post('http://localhost:5000/createRecipes', {
                 title: title,
@@ -141,11 +143,11 @@ const RecipeForm = () => {
                 listIngredient: listIngredient,
                 listSteps: listSteps
             })
-            .then((response) => {
-                console.log(response);
-            }, (error) => {
-                console.log(error)
-            });
+                .then((response) => {
+                    console.log(response);
+                }, (error) => {
+                    console.log(error)
+                });
         }
     }
 
