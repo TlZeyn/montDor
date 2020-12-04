@@ -10,6 +10,7 @@ const port = 5000;
 
 const app = express()
 app.use(cors())
+app.use(bodyParser.json())
 app.use('/', api)
 
 dotenv.config();
@@ -18,6 +19,12 @@ dotenv.config();
 app.get('/', (req, res) => {
     res.send("Hello there, I'm root").status(200)
 })
+
+app.post('/createRecipes', function(req, res) {
+    console.log(req.body)
+    console.log(req.body.listSteps)
+    
+});
 
 app.listen(port, err => {
     if (err){ throw new Error('Something bad happened :(')}
