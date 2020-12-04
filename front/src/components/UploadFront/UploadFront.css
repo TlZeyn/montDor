@@ -1,7 +1,7 @@
 .uploadFront_coverImage {
     background-color : #8C8C8C;
     width: 100%;
-    height: 250px;
+    height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;    
@@ -9,4 +9,15 @@
 
 .testFit{
     object-fit: cover;   
+}
+
+.avatar {
+    text-align: center;      
+}
+
+.uploadFront_avatar {
+    border-radius : 50%;
+    position:absolute;    
+    transform: translate(-50%, -50%);
+    z-index : 1;    
 }

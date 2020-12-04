@@ -45,6 +45,9 @@ const UploadFront = () => {
                 </div>
 
             </label>
+            <div className='avatar'>
+                    <img className='uploadFront_avatar' src='https://via.placeholder.com/150'/>
+                </div>
             <input
                 type="file"
                 id="upload-button"

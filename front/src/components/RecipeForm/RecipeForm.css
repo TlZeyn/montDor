@@ -30,8 +30,10 @@
     background :transparent;
     border : none;
     text-align: center;
-    margin : 3% 20% 3% 20%;
-    font-size : 2rem;    
+    margin : 0 20% 3% 20%;
+    font-size : 2rem; 
+    margin-top: 8rem;
+      
 }
 
 #recipeForm_timeSlot input {
