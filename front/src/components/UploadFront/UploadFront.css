@@ -1,0 +1,12 @@
+.uploadFront_coverImage {
+    background-color : #8C8C8C;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.testFit{
+    object-fit: cover;   
+}

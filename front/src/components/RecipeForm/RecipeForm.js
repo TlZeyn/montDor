@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import UploadFront from '../UploadFront/UploadFront'
 
 import './RecipeForm.css'
 
@@ -102,6 +103,7 @@ const RecipeForm = () => {
 
     return (
         <div id='recipeForm'>
+            <UploadFront />
             <input id='recipeForm_title' type='text' placeholder="Title" onClick={() => setTitle('')} onChange={e => setTitle(e.target.value)}></input>
 
             <section id='recipeForm_timeSlot'>
