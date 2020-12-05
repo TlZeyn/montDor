@@ -7,6 +7,7 @@ import Banner from './components/Banner/Banner'
 import RecipeSearchBar from './components/RecipeSearchBar/RecipeSearchBar'
 import TrendyRecipes from './components/TrendyRecipes/TrendyRecipes'
 import Recipes from './components/Recipes/Recipes'
+import OneRecipe from './components/OneRecipe/OneRecipe'
 import Footer from './components/Footer/Footer'
 
 import './App.css';
@@ -21,6 +22,7 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={TrendyRecipes} />
         <Route path='/recipes' component={Recipes} />
+        <Route path='/recipe' component={OneRecipe} />
       </Switch>
       <Footer />
     </div>
