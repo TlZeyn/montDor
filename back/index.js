@@ -26,6 +26,10 @@ app.post('/createRecipes', function(req, res) {
     
 });
 
+app.post('/uploads', function(req, res) { 
+    console.log(req.body)    
+});
+
 app.listen(port, err => {
     if (err){ throw new Error('Something bad happened :(')}
     console.log(`Server is listening on ${port}`)
