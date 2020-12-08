@@ -23,11 +23,17 @@ const RecipeForm = () => {
     const [nbStep, setNbStep] = useState(0)
 
     const [message, setMessage] = useState(null)
+    const [imageName, setImageName] = useState(null)
 
+    const callbackImage = (image) => {
+        setImageName(image)
+    }
 
     useEffect(() => {
-
+        
     }, [ingredient, quantity, unit])
+
+    
 
     const createIngredient = () => {
         if (ingredient === '' && quantity === '') {
@@ -83,7 +89,7 @@ const RecipeForm = () => {
         const newList = listSteps.filter((item, i) => i !== index.i)
         const lastOfNewList = newList.length - 1
         const lastOfListStep = listSteps.length - 1
-        if (listSteps.length > 1 && newList[lastOfNewList].step == listSteps[lastOfListStep].step ) {
+        if (listSteps.length > 1 && newList[lastOfNewList].step == listSteps[lastOfListStep].step) {
             newList.map((e) => {
                 if (e.number > 1) {
                     e.number -= 1
@@ -116,7 +122,7 @@ const RecipeForm = () => {
     }
 
     const recipeData = (e) => {
-        let data = []
+        
         //verify that all informations are filled OK
         //create object data
         //send object to back with axios
@@ -131,17 +137,26 @@ const RecipeForm = () => {
             document.getElementById('recipeForm_step').style.borderColor = 'red';
         }
         else {
-            // data = [{title}, {nbEaters}, {prepTime}, {cookTime}, {listIngredient}, {listSteps}]
-            // console.log(data)
-
-
             axios.post('http://localhost:5000/creation', {
                 title: title,
                 nbEaters: nbEaters,
                 prepTime: prepTime,
                 cookTime: cookTime,
                 listIngredient: listIngredient,
-                listSteps: listSteps
+                listSteps: listSteps,
+                message: message,
+                imgName: imageName.name
+            })
+                .then((response) => {
+                    console.log(response);
+                }, (error) => {
+                    console.log(error)
+                });
+
+            const formData = new FormData();
+            formData.append("file", imageName);
+            axios.post('http://localhost:5000/upload', formData, {
+
             })
                 .then((response) => {
                     console.log(response);
@@ -154,14 +169,11 @@ const RecipeForm = () => {
     return (
         <div id='recipeForm'>
             <form onSubmit={recipeData}>
-                <UploadFront />
+                <UploadFront parentCallback={callbackImage} />
 
                 <div className='recipeForm_title-group'>
                     <input id='recipeForm_title' type='text' placeholder="Title" onClick={() => setTitle('')} onChange={e => setTitle(e.target.value)} required></input>
                 </div>
-
-
-
 
                 <section id='recipeForm_timeSlot'>
                     <div className='recipeForm_timeSlot_group-input'>

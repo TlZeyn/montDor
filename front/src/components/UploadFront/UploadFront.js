@@ -3,12 +3,16 @@ import React, { useState, useEffect } from 'react'
 
 import './UploadFront.css'
 
-const UploadFront = () => {
+const UploadFront = ({parentCallback})=> {
     const [image, setImage] = useState({ preview: "", raw: "" });
 
-    useEffect(() => {
+    const test2 = () => {
+        parentCallback(image.raw)
+    }
 
-    }, [image])
+    useEffect(() => {
+        test2()
+    }, [image, setImage])
 
     const handleChange = e => {
         if (e.target.files.length) {
@@ -16,25 +20,26 @@ const UploadFront = () => {
                 preview: URL.createObjectURL(e.target.files[0]),
                 raw: e.target.files[0]
             });
-        }
-        console.log(image)
+            
+        }      
+        
     };
 
 
-    const handleUpload = async e => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append("file", image.raw);
+    // const handleUpload = async e => {
+    //     e.preventDefault();
+    //     const formData = new FormData();
+    //     formData.append("file", image.raw);
 
-        axios.post('http://localhost:5000/upload', formData, {
+    //     axios.post('http://localhost:5000/upload', formData, {
 
-        })
-            .then((response) => {
-                console.log(response);
-            }, (error) => {
-                console.log(error)
-            });
-    }
+    //     })
+    //         .then((response) => {
+    //             console.log(response);
+    //         }, (error) => {
+    //             console.log(error)
+    //         });
+    // }
 
 
 
@@ -66,7 +71,7 @@ const UploadFront = () => {
                 onChange={handleChange}
             />
 
-            <button onClick={handleUpload}>Upload</button>
+            {/* <button onClick={handleUpload}>Upload</button> */}
 
         
         </div>
