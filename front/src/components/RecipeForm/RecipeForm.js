@@ -135,7 +135,7 @@ const RecipeForm = () => {
             // console.log(data)
 
 
-            axios.post('http://localhost:5000/createRecipes', {
+            axios.post('http://localhost:5000/creation', {
                 title: title,
                 nbEaters: nbEaters,
                 prepTime: prepTime,

@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useState, useEffect } from 'react'
 
 import './UploadFront.css'
 
 const UploadFront = () => {
     const [image, setImage] = useState({ preview: "", raw: "" });
+
+    useEffect(() => {
+
+    }, [image])
 
     const handleChange = e => {
         if (e.target.files.length) {
@@ -12,25 +17,30 @@ const UploadFront = () => {
                 raw: e.target.files[0]
             });
         }
+        console.log(image)
     };
 
 
     const handleUpload = async e => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append("image", image.raw);
+        formData.append("file", image.raw);
 
-        await fetch("YOUR_URL", {
-            method: "POST",
-            headers: {
-                "Content-Type": "multipart/form-data"
-            },
-            body: formData
-        });
-    };
+        axios.post('http://localhost:5000/upload', formData, {
+
+        })
+            .then((response) => {
+                console.log(response);
+            }, (error) => {
+                console.log(error)
+            });
+    }
+
+
 
     return (
         <div id='uploadFront'>
+
             <label htmlFor="upload-button">
                 <div className='uploadFront_coverImage'>
                     {image.preview ? (
@@ -50,12 +60,15 @@ const UploadFront = () => {
             </div>
             <input
                 type="file"
+                name="upload"
                 id="upload-button"
                 style={{ display: "none" }}
                 onChange={handleChange}
             />
-            <br />
-            {/* <button onClick={handleUpload}>Upload</button> */}
+
+            <button onClick={handleUpload}>Upload</button>
+
+        
         </div>
     );
 
