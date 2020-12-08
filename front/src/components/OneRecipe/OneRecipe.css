@@ -1,16 +1,16 @@
 .master-container {
     background-color: #3E2715;
+    height: auto;
 }
 
 .container {
-    
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     background-color: #C7A489;
-    height: 1751px;
-    width: 1500px;
+    height: auto;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
@@ -23,18 +23,26 @@
 
 .recipe-header__img {
     width: 100%;
-    margin-top: 30px;
+    height: 35em;
+    background-image: url('../../assets/smaug.jpg');
+    background-size: cover;
+    background-position-y: -150px;
+    margin-bottom: 8em;
 }
 
 .recipe-header__img2 {
-    width: 150px;
-    height: 150px;
+    position: absolute;
+    top: 90em;
+    width: 12%;
+    height: 12rem;
     border-radius: 50%;
 }
 
 .recipe-header__title {
     color: white;
+    font-size: 60px;
     font-family: 'Marck Script';
+    margin: 50px;
 }
 
 .recommandations {
@@ -43,6 +51,7 @@
     width: 1194px;
     height: 78px;
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .recommandations ul {
@@ -53,7 +62,14 @@
 }
 
 .recommandations li {
-    margin-top: auto;
+    font-size: 20px;
+    padding: 25px 80px 25px 25px;
+    border-right: solid 1px;
+}
+
+.recommandations li:last-child {
+    border: none;
+    padding-right: 25px;
 }
 
 .describe-part {
