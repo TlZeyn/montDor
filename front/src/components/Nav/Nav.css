@@ -35,7 +35,7 @@ nav ul a li {
 @media screen and (max-width: 1024px) {
   nav ul a{
     width: 17%;
-    font-size: 1em;
+    font-size: 1.25em;
   }
 }
 

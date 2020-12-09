@@ -8,39 +8,38 @@ import './TrendyRecipes.css'
 import img from '../../assets/smaug.jpg'
 
 const TrendyRecipes = () => {
-  
+
   const [recipes, setRecipes] = useState(null)
- 
+
   const fetchRecipes = () => {
     axios.get('http://localhost:5000/accueil')
-          .then(res => setRecipes(res.data))
-          .catch((error) => {console.log(error)})
-          
-        }
-        
-        useEffect(() => {
-          fetchRecipes()
-        }, [])
-        
-        
+      .then(res => setRecipes(res.data))
+      .catch((error) => { console.log(error) })
+  }
+
+  useEffect(() => {
+    fetchRecipes()
+  }, [])
+
+
   return (
     <section id="trendyRecipes">
       <h2 className="trendyRecipes__titles">Notre recette du moment</h2>
       <div className="trendyRecipes__UI">
-        <div id="trendyRecipes__UI-firstCard" className="trendyRecipes__UI-card">
-          <img src={img} alt="Recette"/>
-          {recipes && <h3>{recipes[0].title}</h3>}
-        </div>
-
+        {recipes && recipes.map(recipe => (
+          <RecipeCard
+            img={img}
+            title={recipe.title} />
+        ))}
       </div>
 
       <h2 className="trendyRecipes__titles">Recettes coup de coeur du chef personnel de Thranduil</h2>
-        
+
       <div className="trendyRecipes__UI">
         {recipes && recipes.map(recipe => (
-          <RecipeCard 
-          img={img}
-          title={recipe.title}/>
+          <RecipeCard
+            img={img}
+            title={recipe.title} />
         ))}
       </div>
 
@@ -48,14 +47,14 @@ const TrendyRecipes = () => {
 
       <div className="trendyRecipes__UI">
         {recipes && recipes.map(recipe => (
-          <RecipeCard 
-          img={img}
-          title={recipe.title}/>
+          <RecipeCard
+            img={img}
+            title={recipe.title} />
         ))}
       </div>
     </section>
   )
-  
+
 }
 
 export default TrendyRecipes
