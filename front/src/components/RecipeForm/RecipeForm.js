@@ -22,8 +22,8 @@ const RecipeForm = () => {
     const [listSteps, setListSteps] = useState([])
     const [nbStep, setNbStep] = useState(0)
 
-    const [message, setMessage] = useState(null)
-    const [imageName, setImageName] = useState(null)
+    const [message, setMessage] = useState(undefined)
+    const [imageName, setImageName] = useState(undefined)
 
     const callbackImage = (image) => {
         setImageName(image)
@@ -106,9 +106,7 @@ const RecipeForm = () => {
             setSteps(modification[0].step)
             const newList = listSteps.filter((item, i) => i !== index.i)
             setListSteps(newList)
-
         }
-
     }
 
     let sortedArray = listSteps.sort((a, b) => (a.number > b.number) ? 1 : -1)
@@ -122,10 +120,7 @@ const RecipeForm = () => {
     }
 
     const recipeData = (e) => {
-        
-        //verify that all informations are filled OK
-        //create object data
-        //send object to back with axios
+    
         e.preventDefault();
         if (listIngredient.length < 1) {
             document.getElementById('recipeForm_addIngredient').style.borderStyle = 'solid';
@@ -139,13 +134,13 @@ const RecipeForm = () => {
         else {
             axios.post('http://localhost:5000/creation', {
                 title: title,
-                nbEaters: nbEaters,
-                prepTime: prepTime,
-                cookTime: cookTime,
+                nbEaters: Number(nbEaters),
+                prepTime: Number(prepTime),
+                cookTime: Number(cookTime),
                 listIngredient: listIngredient,
                 listSteps: listSteps,
                 message: message,
-                imgName: imageName.name
+                imgName: imageName.name 
             })
                 .then((response) => {
                     console.log(response);
@@ -206,7 +201,7 @@ const RecipeForm = () => {
 
                 <section id='recipeForm_addIngredient'>
                     <input className='recipeForm_addIngredient-input-igr' type='text' placeholder='Ingrédient' value={ingredient} onChange={e => setIngredient(e.target.value)} onClick={() => restoreSettingsIngredient()} ></input>
-                    <input className='recipeForm_addIngredient-input-qty' type='number' placeholder='Quantité' value={quantity} step='any' onChange={e => setQuantity(e.target.value)} onClick={() => restoreSettingsIngredient()}></input>
+                    <input className='recipeForm_addIngredient-input-qty' type='number' placeholder='Quantité' value={quantity} step='any' onChange={e => setQuantity(parseFloat(e.target.value))} onClick={() => restoreSettingsIngredient()}></input>
                     <input className='recipeForm_addIngredient-input-unt' type='text' placeholder='Unité' value={unit} onChange={e => setUnit(e.target.value)}></input>
                     <input type='button' value='+' onClick={() => createIngredient()}></input>
                 </section>
