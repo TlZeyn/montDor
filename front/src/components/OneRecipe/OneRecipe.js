@@ -8,7 +8,18 @@ import img3 from '../../assets/chief.jpeg'
 
 const OneRecipe = () => {
 
-    
+   const [recipe, setRecipe] = useState(null)
+ 
+   const fetchRecipe = () => {
+     axios.get('http://localhost:5000/recette')
+           .then(res => setRecipe(res.data))
+           .catch((error) => {console.log(error)})
+         }
+         
+         useEffect(() => {
+           fetchRecipe()
+         }, [])
+
 
     return(
 
@@ -17,7 +28,10 @@ const OneRecipe = () => {
          <div className="oneRecipe__container">
             <div className="oneRecipe__container-header--img"></div>
             <img className="oneRecipe__container-header--img2" src={img2} alt="avatar"/>
-            <h2 className="oneRecipe__container-header--title">Nom de la recette</h2>
+            {recipe && recipe.map(recipeone => {
+            <h2 className="oneRecipe__container-header--title">{recipeone.title}</h2>
+            })}
+            {/* <h2 className="oneRecipe__container-header--title">Nom de la recette</h2> */}
             <div className="recommandations">
                <ul>
                   <li>Nombre d'aventuriers : 6</li>
