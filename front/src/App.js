@@ -1,5 +1,6 @@
-import React from 'react'
-import { Switch, Route} from "react-router-dom"
+import React, {useEffect, useState} from 'react'
+import { Switch, Route} from 'react-router-dom'
+import axios from 'axios'
 
 import Header from './components/Header/Header'
 import Nav from './components/Nav/Nav'
@@ -13,6 +14,22 @@ import Footer from './components/Footer/Footer'
 import './App.css';
 
 const App = () => {
+
+  // to developp later
+  // const [recipes, setRecipes] = useState(null)
+
+  // const fetchRecipes = () => {
+  //   axios.get('http://localhost:5000/')
+  //        .then(res => setRecipes(res.data))
+  //        .catch((error) => console.log(error))
+  // }
+
+  // useEffect(() => {
+  //   fetchRecipes()
+  // }, [])
+
+  // console.log("dans mon app", recipes)
+
   return (
     <div className="App">
       <Header />

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import './OneRecipe.css'
+import RecipeCard from '../RecipeCard/RecipeCard';
 
-import img2 from '../../assets/avatar.jpeg'
-import img3 from '../../assets/chief.jpeg'
+import './OneRecipe.css';
+
+import img2 from '../../assets/avatar.jpeg';
+import img3 from '../../assets/chief.jpeg';
 
 const OneRecipe = () => {
 
@@ -12,7 +14,7 @@ const OneRecipe = () => {
  
    const fetchRecipe = () => {
      axios.get('http://localhost:5000/recette')
-           .then(res => setRecipe(res.data))
+           .then(res => setRecipe(res.data[0]))
            .catch((error) => {console.log(error)})
          }
          
@@ -20,6 +22,7 @@ const OneRecipe = () => {
            fetchRecipe()
          }, [])
 
+         console.log("mes données", recipe)
 
     return(
 
@@ -28,17 +31,16 @@ const OneRecipe = () => {
          <div className="oneRecipe__container">
             <div className="oneRecipe__container-header--img"></div>
             <img className="oneRecipe__container-header--img2" src={img2} alt="avatar"/>
-            {recipe && recipe.map(recipeone => {
-            <h2 className="oneRecipe__container-header--title">{recipeone.title}</h2>
-            })}
-            {/* <h2 className="oneRecipe__container-header--title">Nom de la recette</h2> */}
-            <div className="recommandations">
+            {recipe &&<div>
+            <h2 className="oneRecipe__container-header--title">{recipe[0].title}</h2>
+            </div>}
+            {recipe &&<div className="recommandations">
                <ul>
-                  <li>Nombre d'aventuriers : 6</li>
+                  <li>Nombre d'aventuriers : {recipe[0].eaters}</li>
                   <li>Temps de préparation : 15 min</li>
                   <li>Temps de cuisson : 35 min</li>
                </ul>         
-             </div>
+             </div>}
             <div className="describe-part">
                <div className="ingredients">
                   <h3>Ingrédients</h3>
