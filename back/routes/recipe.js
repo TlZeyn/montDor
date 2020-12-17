@@ -3,7 +3,7 @@ const router = express.Router()
 const connection = require('../conf')
 
 router.get('/', (req, res) => {
-    //print all recipes in homepage : http://localhost:5000/accueil/
+    //print all recipes in homepage : http://localhost:5000/accueil
     connection.query(
         'SELECT rcp_title AS title, rcp_nbEater AS nbEater, rcp_photo AS photo FROM t_recipe_rcp', (err, results) => {
             if (err) {

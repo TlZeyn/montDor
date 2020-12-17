@@ -15,7 +15,6 @@ const TrendyRecipes = () => {
     axios.get('http://localhost:5000/accueil')
           .then(res => setRecipes(res.data))
           .catch((error) => {console.log(error)})
-          
         }
         
         useEffect(() => {

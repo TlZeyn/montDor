@@ -2,7 +2,7 @@ import React from 'react';
 import './RecipeCard.css'
 
 
-export default function RecipeCard({img, title}) {
+const RecipeCard = ({img, title}) => {
     return(
         <div className="card">
             <img src={img} alt=""/>
@@ -10,3 +10,5 @@ export default function RecipeCard({img, title}) {
         </div>
     )
 }
+
+export default RecipeCard;
