@@ -6,12 +6,12 @@ import './UploadFront.css'
 const UploadFront = ({parentCallback})=> {
     const [image, setImage] = useState({ preview: "", raw: "" });
 
-    const test2 = () => {
+    const refreshParent = () => {
         parentCallback(image.raw)
     }
 
     useEffect(() => {
-        test2()
+        refreshParent()
     }, [image, setImage])
 
     const handleChange = e => {
@@ -19,33 +19,13 @@ const UploadFront = ({parentCallback})=> {
             setImage({
                 preview: URL.createObjectURL(e.target.files[0]),
                 raw: e.target.files[0]
-            });
-            
+            });        
         }      
         
     };
 
-
-    // const handleUpload = async e => {
-    //     e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append("file", image.raw);
-
-    //     axios.post('http://localhost:5000/upload', formData, {
-
-    //     })
-    //         .then((response) => {
-    //             console.log(response);
-    //         }, (error) => {
-    //             console.log(error)
-    //         });
-    // }
-
-
-
     return (
         <div id='uploadFront'>
-
             <label htmlFor="upload-button">
                 <div className='uploadFront_coverImage'>
                     {image.preview ? (
@@ -69,15 +49,9 @@ const UploadFront = ({parentCallback})=> {
                 id="upload-button"
                 style={{ display: "none" }}
                 onChange={handleChange}
-            />
-
-            {/* <button onClick={handleUpload}>Upload</button> */}
-
-        
+            />    
         </div>
     );
-
-
 }
 
 
