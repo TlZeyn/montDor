@@ -5,6 +5,8 @@ const api = require('./routes/index')
 const dotenv = require('dotenv')
 const cors = require('cors')
 
+const qt   = require('quickthumb');
+
 
 
 
@@ -14,6 +16,9 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 app.use('/', api)
+
+// Use quickthumb
+app.use(qt.static(__dirname + '/'))
 
 dotenv.config();
 

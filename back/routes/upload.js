@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const connection = require('../conf')
 
+
 //dependencies for upload
 const multer = require('multer');
 
@@ -10,7 +11,7 @@ let storage = multer.diskStorage({
     cb(null, 'uploads')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' +file.originalname )
+    cb(null, file.originalname )
   }
 })
 
@@ -25,10 +26,11 @@ router.post('/',function(req, res) {
                return res.status(500).json(err)
            }
       return res.status(200).send(req.file)
-
     })
 
 });
+
+
 
 
 module.exports = router;
