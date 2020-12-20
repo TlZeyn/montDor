@@ -7,7 +7,7 @@ import img from '../../assets/smaug.jpg'
 
 const Recipes = () => {
 
-  const [recipes, setRecipes] = useState([])
+  const [recipes, setRecipes] = useState(null)
 
   const fetchRecipes = () => {
     axios.get('http://localhost:5000/recettes')
