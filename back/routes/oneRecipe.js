@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const connection = require('../conf')
 
-router.post('/', (req, res) => {
+router.post('/:id', (req, res) => {
     // Fetch datas for one recipe in recipe vue : http://localhost:5000/recette/:id
     const id = req.params.id    
     connection.query(

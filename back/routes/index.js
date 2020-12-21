@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.use('/accueil',homepage);
 router.use('/recettes',recipes);
-router.use('/recette/:id', oneRecipe);
+router.use('/recette', oneRecipe);
+
+
 
 module.exports = router;
