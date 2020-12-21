@@ -119,6 +119,11 @@
       background-color: #6D773A;
   }
 
+  /* Change style whenever burger is opened */
+  .Nav-Checkbox:checked .Nav-Logo-Container {
+    visibility: hidden;
+  }
+
   /* Display links when checkbox is checked */
   .Nav-Checkbox:checked + .Nav-Link-List {
       margin: 1em 0;
