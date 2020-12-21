@@ -7,7 +7,7 @@ import './TrendyRecipes.css'
 
 import img from '../../assets/smaug.jpg'
 
-const TrendyRecipes = () => {
+const TrendyRecipes = ({trendyRecipesProps}) => {
   
   const [recipes, setRecipes] = useState(null)
  
@@ -20,6 +20,7 @@ const TrendyRecipes = () => {
         useEffect(() => {
           fetchRecipes()
         }, [])
+
         
         
   return (

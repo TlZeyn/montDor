@@ -15,21 +15,6 @@ import './App.css';
 
 const App = () => {
 
-  // to developp later
-  // const [recipes, setRecipes] = useState(null)
-
-  // const fetchRecipes = () => {
-  //   axios.get('http://localhost:5000/')
-  //        .then(res => setRecipes(res.data))
-  //        .catch((error) => console.log(error))
-  // }
-
-  // useEffect(() => {
-  //   fetchRecipes()
-  // }, [])
-
-  // console.log("dans mon app", recipes)
-
   return (
     <div className="App">
       <Header />
@@ -37,9 +22,9 @@ const App = () => {
       <Banner />
       <RecipeSearchBar />
       <Switch>
-        <Route exact path='/' component={TrendyRecipes} />
-        <Route path='/recipes' component={Recipes} />
-        <Route path='/recipe' component={OneRecipe} />
+        <Route exact path='/'><TrendyRecipes /></Route>
+        <Route path='/recipes'><Recipes /></Route>
+        <Route path='/recipe/:id'><OneRecipe /></Route>
       </Switch>
       <Footer />
     </div>
