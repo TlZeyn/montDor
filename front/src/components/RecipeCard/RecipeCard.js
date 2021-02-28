@@ -10,12 +10,9 @@ const RecipeCard = ({img, title, id}) => {
 
 
     const fetchTheRecipe = () => {
-        // axios.get(`http://localhost:5000/recette/${id}`)
-        //   .then(res => setSingleRecipe(res.data))
-        //   .catch((error) => {console.log(error)})
-        axios.post(`http://localhost:5000/recette/${id}`, { id: id })
-            .then(res => setSingleRecipe(res.data))
-            .catch((error) => console.log(error))
+        axios.get(`http://localhost:5000/recette/${id}`)
+          .then(res => setSingleRecipe(res.data))
+          .catch((error) => {console.log(error)})
         }
        
         useEffect(() => {
