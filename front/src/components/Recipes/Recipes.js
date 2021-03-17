@@ -9,6 +9,7 @@ import img from '../../assets/smaug.jpg'
 const Recipes = () => {
 
   const [recipes, setRecipes] = useState(null)
+  const absolutePath = "http://localhost:5000"
  
   const fetchRecipes = () => {
     axios.get('http://localhost:5000/recettes')
@@ -38,7 +39,7 @@ const Recipes = () => {
           {recipes && recipes.map(recipe => (
             <RecipeCard
               id={recipe.id}
-              img={img}
+              img={recipe.photo == null ? img : absolutePath+recipe.photo}
               title={recipe.title}/>
           ))}
 

@@ -10,8 +10,11 @@ import TrendyRecipes from './components/TrendyRecipes/TrendyRecipes'
 import Recipes from './components/Recipes/Recipes'
 import OneRecipe from './components/OneRecipe/OneRecipe'
 import Footer from './components/Footer/Footer'
+import RecipeForm from './components/RecipeForm/RecipeForm'
+import RecipeCard from './components/RecipeCard/RecipeCard'
 
 import './App.css';
+
 
 const App = () => {
 
