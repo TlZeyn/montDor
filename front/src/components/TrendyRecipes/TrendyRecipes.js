@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import RecipeCard from '../RecipeCard/RecipeCard';
 
@@ -49,10 +50,14 @@ const TrendyRecipes = () => {
 
       <div className="trendyRecipes__UI">
         {recipes && recipes.map(recipe => (
-          <RecipeCard
-          id={recipe.id} 
-          img={recipe.photo == null ? img : absolutePath+recipe.photo}
-          title={recipe.title}/>
+          <Link to={{
+            pathname:`/recipe/${recipe.id}`,
+          }}>
+            <RecipeCard
+              id={recipe.id} 
+              img={recipe.photo == null ? img : absolutePath+recipe.photo}
+              title={recipe.title}/>
+          </Link>
         ))}
       </div>
     </section>

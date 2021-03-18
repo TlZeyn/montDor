@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 import RecipeCard from '../RecipeCard/RecipeCard';
 
@@ -10,10 +11,12 @@ import img3 from '../../assets/chief.jpeg';
 
 const OneRecipe = () => {
 
+   let { id } = useParams();
+
    const [recipe, setRecipe] = useState(null)
  
    const fetchRecipe = () => {
-     axios.get('http://localhost:5000/recette/:id')
+     axios.get(`http://localhost:5000/recette/${id}`)
            .then(res => setRecipe(res.data))
            .catch((error) => {console.log(error)})
          }
