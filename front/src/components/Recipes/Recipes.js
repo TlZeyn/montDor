@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import RecipeCard from '../RecipeCard/RecipeCard'
 import axios from 'axios';
 
 import './Recipes.css'
@@ -8,17 +9,19 @@ import img from '../../assets/smaug.jpg'
 const Recipes = () => {
 
   const [recipes, setRecipes] = useState(null)
-
+  const absolutePath = "http://localhost:5000"
+ 
   const fetchRecipes = () => {
     axios.get('http://localhost:5000/recettes')
-      .then((res) => { console.log(res.data) })
-      .catch((error) => { console.log(error) })
-      .then(data => { setRecipes({ recipes: data }) })
-  }
+          .then(res => setRecipes(res.data))
+          .catch((error) => {console.log(error)})
+        }
+        
+        useEffect(() => {
+          fetchRecipes()
+        }, [])
 
-  useEffect(() => {
-    fetchRecipes()
-  }, [])
+        
 
   return (
     <section id="recipes">
@@ -33,26 +36,12 @@ const Recipes = () => {
       </div>
 
       <div id="recipes__results">
-
-        <div id="recipes__results--firstCard" className="recipes__results--card">
-          <img src={img} alt="Recette" />
-          <h3>La Douceur de Smaug</h3>
-        </div>
-
-        <div id="recipes__results--secondCard" className="recipes__results--card">
-          <img src={img} alt="Recette" />
-          <h3>La Douceur de Smaug</h3>
-        </div>
-
-        <div id="recipes__results--thirdCard" className="recipes__results--card">
-          <img src={img} alt="Recette" />
-          <h3>La Douceur de Smaug</h3>
-        </div>
-
-        <div id="recipes__results--fourthCard" className="recipes__results--card">
-          <img src={img} alt="Recette" />
-          <h3>La Douceur de Smaug</h3>
-        </div>
+          {recipes && recipes.map(recipe => (
+            <RecipeCard
+              id={recipe.id}
+              img={recipe.photo == null ? img : absolutePath+recipe.photo}
+              title={recipe.title}/>
+          ))}
 
       </div>
 

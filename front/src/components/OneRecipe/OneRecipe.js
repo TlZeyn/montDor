@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 import RecipeCard from '../RecipeCard/RecipeCard';
 
@@ -10,11 +11,13 @@ import img3 from '../../assets/chief.jpeg';
 
 const OneRecipe = () => {
 
+   let { id } = useParams();
+
    const [recipe, setRecipe] = useState(null)
  
    const fetchRecipe = () => {
-     axios.get('http://localhost:5000/recette')
-           .then(res => setRecipe(res.data[0]))
+     axios.get(`http://localhost:5000/recette/${id}`)
+           .then(res => setRecipe(res.data))
            .catch((error) => {console.log(error)})
          }
          
@@ -32,11 +35,11 @@ const OneRecipe = () => {
             <div className="oneRecipe__container-header--img"></div>
             <img className="oneRecipe__container-header--img2" src={img2} alt="avatar"/>
             {recipe &&<div>
-            <h2 className="oneRecipe__container-header--title">{recipe[0].title}</h2>
+            <h2 className="oneRecipe__container-header--title">{recipe.title}</h2>
             </div>}
             {recipe &&<div className="recommandations">
                <ul>
-                  <li>Nombre d'aventuriers : {recipe[0].eaters}</li>
+                  <li>Nombre d'aventuriers : {recipe.eaters}</li>
                   <li>Temps de préparation : 15 min</li>
                   <li>Temps de cuisson : 35 min</li>
                </ul>         

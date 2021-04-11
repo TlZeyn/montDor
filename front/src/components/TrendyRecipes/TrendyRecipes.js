@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import RecipeCard from '../RecipeCard/RecipeCard';
 
@@ -13,7 +14,7 @@ const TrendyRecipes = () => {
   const absolutePath = "http://localhost:5000"
  
   const fetchRecipes = () => {
-    axios.get('http://localhost:5000/accueil')
+    axios.get('http://localhost:5000/recettes')
           .then(res => setRecipes(res.data))
           .catch((error) => {console.log(error)})
         }
@@ -21,7 +22,8 @@ const TrendyRecipes = () => {
         useEffect(() => {
           fetchRecipes()
         }, [])
-        
+
+
         
   return (
     <section id="trendyRecipes">
@@ -48,9 +50,13 @@ const TrendyRecipes = () => {
 
       <div className="trendyRecipes__UI">
         {recipes && recipes.map(recipe => (
-          <RecipeCard 
-          img={recipe.photo == null ? img : absolutePath+recipe.photo}
-          title={recipe.title}/>
+          <Link to={{
+            pathname:`/recipe/${recipe.id}`,
+          }}>
+            <RecipeCard
+              img={recipe.photo == null ? img : absolutePath+recipe.photo}
+              title={recipe.title}/>
+          </Link>
         ))}
       </div>
     </section>
