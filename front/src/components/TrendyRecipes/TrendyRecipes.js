@@ -54,7 +54,6 @@ const TrendyRecipes = () => {
             pathname:`/recipe/${recipe.id}`,
           }}>
             <RecipeCard
-              id={recipe.id} 
               img={recipe.photo == null ? img : absolutePath+recipe.photo}
               title={recipe.title}/>
           </Link>

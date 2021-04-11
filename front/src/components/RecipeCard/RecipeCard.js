@@ -2,7 +2,7 @@ import React from 'react';
 import './RecipeCard.css';
 
 
-const RecipeCard = ({img, title, id}) => {
+const RecipeCard = ({img, title}) => {
 
 
     return(
