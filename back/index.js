@@ -15,7 +15,6 @@ const port = 5000;
 const app = express()
 app.use(bodyParser.json())
 app.use(cors())
-app.use(bodyParser.json())
 app.use('/', api)
 
 // Use quickthumb
