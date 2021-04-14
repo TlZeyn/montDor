@@ -30,6 +30,11 @@
   height: 80%;
 }
 
+.trendyRecipes__UI-card--link {
+  text-decoration: none;
+  color: black;
+}
+
 .trendyRecipes__UI-card img {
   width: 100%;
   height: 20em;

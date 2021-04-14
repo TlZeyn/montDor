@@ -1,5 +1,5 @@
 .card {
-    width: 30%;
+    width: 100%;
     background: url("../../assets/parchemin.jpeg");
     background-position: bottom;
     display: flex;

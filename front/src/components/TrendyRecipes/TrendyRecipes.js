@@ -50,13 +50,15 @@ const TrendyRecipes = () => {
 
       <div className="trendyRecipes__UI">
         {recipes && recipes.map(recipe => (
-          <Link to={{
+          <div className="trendyRecipes__UI-card">
+            <Link className="trendyRecipes__UI-card--link" to={{
             pathname:`/recipe/${recipe.id}`,
           }}>
             <RecipeCard
               img={recipe.photo == null ? img : absolutePath+recipe.photo}
               title={recipe.title}/>
           </Link>
+          </div>
         ))}
       </div>
     </section>
