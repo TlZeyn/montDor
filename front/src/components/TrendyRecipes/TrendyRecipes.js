@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import Banner from '../Banner/Banner';
+import RecipeSearchBar from '../RecipeSearchBar/RecipeSearchBar';
 import RecipeCard from "../RecipeCard/RecipeCard";
 
 import "./TrendyRecipes.css";
@@ -26,6 +28,9 @@ const TrendyRecipes = () => {
   }, []);
 
   return (
+    <>
+    <Banner />
+    <RecipeSearchBar />
     <section id="trendyRecipes">
       <h2 className="trendyRecipes__titles">Dernières recettes</h2>
 
@@ -48,6 +53,7 @@ const TrendyRecipes = () => {
           ))}
       </div>
     </section>
+    </>
   );
 };
 

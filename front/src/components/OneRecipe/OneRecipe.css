@@ -9,29 +9,30 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: #C7A489;
     height: auto;
-    width: 75%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
 }
 
-
+.oneRecipe__container-header {
+    position: relative;
+    width: 100%;
+}
 
 .oneRecipe__container-header--img {
+    position: relative;
     width: 100%;
     height: 35em;
     background-image: url('../../assets/smaug.jpg');
     background-size: cover;
-    background-position-y: -150px;
-    margin-bottom: 8em;
 }
 
 .oneRecipe__container-header--img2 {
     position: absolute;
-    top: 90em;
-    width: 12%;
+    top: 460px;
+    left: 1100px;
+    width: 8%;
     height: 12rem;
     border-radius: 50%;
 }
@@ -39,7 +40,7 @@
 .oneRecipe__container-header--title {
     color: white;
     font-size: 70px;
-    margin: 50px;
+    margin: 100px 100px;
 }
 
 .recommandations {
@@ -71,7 +72,7 @@
 
 .describe-part {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     width: 100%;
     padding-top: 100px;
@@ -79,13 +80,11 @@
 
 .describe-part h3 {
     font-size: 30px;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.ingredients {
-    width: 33%;
-    border-right: solid 1px white;
+    padding: 20px;
+    color: white;
+    background: #FFD27566;
+    opacity: 40%;
+    text-align: left;
 }
 
 .ingredients p {
@@ -97,7 +96,6 @@
 
 .steps {
     width: 33%;
-    border-right: solid 1px white;
     padding-right: 50px;
     padding-left: 50px;
 }
@@ -111,16 +109,6 @@
 .steps p {
     font-size: 25px;
     line-height: 2;
-}
-
-.suggestion {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 33%;
-    height: 600px;
-
 }
 
 .chiefTrick {

@@ -32,21 +32,23 @@ const OneRecipe = () => {
       <section className="oneRecipe">
 
          <div className="oneRecipe__container">
-            <div className="oneRecipe__container-header--img"></div>
-            <img className="oneRecipe__container-header--img2" src={img2} alt="avatar"/>
-            {recipe &&<div>
-            <h2 className="oneRecipe__container-header--title">{recipe.title}</h2>
-            </div>}
-            {recipe &&<div className="recommandations">
+            <div className="oneRecipe__container-header">
+               <div className="oneRecipe__container-header--img"></div>
+               <img className="oneRecipe__container-header--img2" src={img2} alt="avatar"/>
+            </div>
+            <div>
+               <h2 className="oneRecipe__container-header--title">Ma recette</h2>
+            </div>
+            <div className="recommandations">
                <ul>
-                  <li>Nombre d'aventuriers : {recipe.eaters}</li>
+                  <li>Nombre d'aventuriers : 2</li>
                   <li>Temps de préparation : 15 min</li>
                   <li>Temps de cuisson : 35 min</li>
                </ul>         
-             </div>}
+             </div>
             <div className="describe-part">
                <div className="ingredients">
-                  <h3>Ingrédients</h3>
+                  <h3 className="ingredients__title">Ingrédients</h3>
                   <p>- 1er ingrédient</p>
                   <p>- 2eme ingrédient</p>
                   <p>- 3eme ingrédient</p>
@@ -56,12 +58,6 @@ const OneRecipe = () => {
                   <p>Je fais d'abord ça</p>
                   <p>Puis ça...</p>
                   <p>Puis je finis par ça</p>
-               </div>
-               <div className="suggestion">
-                  <h3>Recettes suggérées</h3>
-                  <img src="https://via.placeholder.com/150" />
-                  <img src="https://via.placeholder.com/150" />
-                  <img src="https://via.placeholder.com/150" />
                </div>
             </div>
             <div className="chiefTrick">
