@@ -80,7 +80,7 @@
 
 .describe-part h3 {
     font-size: 30px;
-    padding: 20px;
+    padding: 10px;
     color: white;
     background: #FFD27566;
     opacity: 40%;
@@ -88,22 +88,17 @@
 }
 
 .ingredients p {
+    color: white;
     font-size: 25px;
     text-align: left;
     margin-left: 10px;
     line-height: 2;
+    padding: 10px;
 }
 
 .steps {
-    width: 33%;
-    padding-right: 50px;
-    padding-left: 50px;
-}
-
-.steps h3 {
-    background-color: lightgray;
-    border-radius: 10px;
-    padding: 10px;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .steps p {

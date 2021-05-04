@@ -48,7 +48,7 @@ const OneRecipe = () => {
              </div>
             <div className="describe-part">
                <div className="ingredients">
-                  <h3 className="ingredients__title">Ingrédients</h3>
+                  <h3>Ingrédients</h3>
                   <p>- 1er ingrédient</p>
                   <p>- 2eme ingrédient</p>
                   <p>- 3eme ingrédient</p>
